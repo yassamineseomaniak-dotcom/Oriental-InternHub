@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oriental InternHub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                Oriental InternHub
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#companies">Entreprises</a></li>
+                <li><a href="#resources">Documents</a></li>
+                <li><a href="#help">Help</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+
+    <!-- HERO -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>La porte institutionnelle de l'Oriental</h1>
+
+            <div class="search-container">
+
+                <input type="text" id="search-bar" placeholder="Rechercher par nom, ville, secteur...">
+
+                <button id="searchBtn">
+                    Rechercher
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RECOMMENDED COMPANIES -->
+    <section id="companies" class="section">
+        <div class="container">
+            <h2>Entreprises Recommandées</h2>
+
+            <div id="recommended-grid" class="company-grid">
+                <!-- Rempli dynamiquement par le JavaScript (6 cartes à la une) -->
+            </div>
+
+            <!-- LE BOUTON À AJOUTER ICI -->
+            <button id="load-more-btn" style="display: none; margin: 30px auto; padding: 12px 24px; cursor: pointer; border-radius: 6px; font-weight: bold;">Afficher plus</button>
+
+        </div>
+    </section>
+
+    <!-- DIRECTORY -->
+    <section id="directory" class="section alt-section">
+        <div class="container">
+            <h2>Annuaire des Entreprises</h2>
+
+                <div class="directory-filters">
+                    <button type="button" class="sector-btn" data-sector="Informatique / Tech">Informatique / Tech</button>
+                    <button type="button" class="sector-btn" data-sector="Marketing / Communication / Digital">Marketing / Digital</button>
+                    <button type="button" class="sector-btn" data-sector="Design / Création graphique / Production">Design & Production</button>
+                    <button type="button" class="sector-btn" data-sector="Commerce / E-commerce">Commerce / E-commerce</button>
+                    <button type="button" class="sector-btn" data-sector="Tourisme / Hébergement">Tourisme / Hébergement</button>
+                    <button type="button" class="sector-btn" data-sector="Transport / Logistique">Transport / Logistique</button>
+                    <button type="button" class="sector-btn" data-sector="Finance / Assurance">Finance / Assurance</button>
+                    <button type="button" class="sector-btn" data-sector="Sécurité">Sécurité</button>
+                    <button type="button" class="sector-btn" data-sector="Construction / BTP">Construction / BTP</button>
+                    <button type="button" class="sector-btn" data-sector="Agriculture / Agroalimentaire">Agriculture / Agroalimentaire</button>
+                    <button type="button" class="sector-btn" data-sector="Restauration">Restauration</button>
+                    <button type="button" class="sector-btn" data-sector="Services professionnels / Autres">Services professionnels</button>
+                </div>
+
+            <div id="directoryResults" class="company-grid">
+                <!-- Dynamically filled later (15 cartes puis +9 par clic) -->
+            </div>
+
+            
+        </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section id="resources" class="section">
+        <div class="container">
+            <h2>Documents & Ressources</h2>
+
+            <div class="resources-grid">
+               
+                <button class="resource-card" id="openCvBuilder" type="button">
+                    📄 CV Template
+                </button>
+
+                <button class="resource-card" id="openLetterBuilder" type="button">
+                    ✉️ Lettre de Motivation
+                </button>
+
+                <button class="resource-card" id="openReportBuilder" type="button">
+                    📚 Rapport de Stage
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- HELP -->
+    <section id="help" class="section alt-section">
+        <div class="container help-container">
+
+            <h2>Besoin d'aide ?</h2>
+
+            <p>
+                Remplissez notre formulaire Google pour nous contacter.
+            </p>
+
+            <button class="btn-primary" id="openFormBtn">
+                Ouvrir le formulaire
+            </button>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2026 Oriental InternHub. Tous droits réservés.</p>
+            <p>Plateforme dédiée aux stages et opportunités professionnelles dans la région de l'Oriental.</p>
+        </div>
+    </footer>
+
+
+    <!-- FORM MODAL -->
+    <div id="formModal" class="modal">
+
+        <div class="modal-content">
+
+            <span class="close-modal" id="closeFormBtn">&times;</span>
+
+<form id="placementForm" class="placement-form" action="https://formsubmit.co/yassamineseomaniak@gmail.com" method="POST">
+            <h2>Formulaire d'Aide au Placement & Matching Étudiant</h2>
+
+            <p class="form-intro">
+                Remplissez ce formulaire afin que nous puissions vous orienter vers les entreprises les plus adaptées à votre profil.
+            </p>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Prénom</label>
+                    <input type="text" name="prenom" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Nom</label>
+                    <input type="text" name="nom" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Téléphone</label>
+                <input type="tel" name="telephone">
+            </div>
+
+            <div class="form-group">
+                <label>Ville</label>
+                <input type="text" name="ville">
+            </div>
+
+            <div class="form-group">
+                <label>Établissement</label>
+                <input type="text" name="etablissement">
+            </div>
+
+            <div class="form-group">
+                <label>Filière</label>
+                <input type="text" name="filiere">
+            </div>
+
+            <div class="form-group">
+                <label>Année d'étude</label>
+
+                <select name="niveau">
+                    <option>Bac+2</option>
+                    <option>Bac+3</option>
+                    <option>Bac+4</option>
+                    <option>Bac+5</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Type de stage recherché</label>
+
+                <select name="stage">
+                    <option>Stage d'initiation</option>
+                    <option>Stage d'application</option>
+                    <option>PFE</option>
+                    <option>Alternance</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Domaines d'intérêt</label>
+
+                <div class="checkbox-grid">
+
+                   <div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="Génie Logiciel">
+    <span>Génie Logiciel</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="Développement Web & Mobile">
+    <span>Développement Web & Mobile</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="Data Science">
+    <span>Data Science</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="Intelligence Artificielle">
+    <span>Intelligence Artificielle</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="Cybersécurité">
+    <span>Cybersécurité</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="Réseaux">
+    <span>Réseaux & Télécommunications</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="Cloud">
+    <span>Cloud Computing</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="Systèmes Embarqués">
+    <span>Systèmes Embarqués</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="Business Intelligence">
+    <span>Business Intelligence</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="ERP">
+    <span>ERP & Gestion</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="Finance">
+    <span>Finance & Comptabilité</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="Logistique">
+    <span>Logistique & Supply Chain</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" name="domaines" value="Marketing">
+    <span>Marketing Digital</span>
+</div>
+
+<div class="checkbox-item">
+    <input type="checkbox" id="autreCheckbox" value="Autre">
+    <span>Autre</span>
+</div>
+
+                    <!-- This replaces the empty box with a clean text input field -->
+                    <div class="custom-domain-item">
+                        <input 
+                            type="text" 
+                            id="autreCustomInput" 
+                            name="autre_custom" 
+                            placeholder="Précisez votre domaine..." 
+                        >
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Compétences principales</label>
+
+                <textarea
+                    name="competences"
+                    rows="4"
+                    placeholder="HTML, CSS, JavaScript, WordPress, Photoshop..."
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Décrivez votre profil et le type d'entreprise recherché</label>
+
+                <textarea
+                    name="description"
+                    rows="6"
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">
+                Déposer une candidature
+            </button>
+
+            <div id="successMessage"></div>
+
+        </form>
+
+        </div>
+
+    </div>
+    <div id="builderModal" class="modal">
+
+<div class="modal-content builder-content">
+<span class="close-modal" id="closeCvBuilder">&times;</span>
+
+
+<div id="cvTemplateArea">
+
+    <!-- TEMPLATE GENERATED HERE -->
+     <div class="cv-toolbar no-print">
+
+    <button id="downloadCV" class="btn-primary">
+        Télécharger le CV
+    </button>
+
+    <div id="restoreContainer"></div>
+
+</div>
+
+
+<div class="cv-template" id="cvTemplate">
+
+    <!-- LEFT COLUMN -->
+
+    <aside class="cv-sidebar">
+
+        <label class="photo-container">
+
+            <input
+                type="file"
+                id="photoUpload"
+                accept=".jpg,.jpeg,.png"
+                hidden
+            >
+
+            <img id="photoPreview">
+
+            <div class="photo-placeholder">
+
+                Insert Photo
+
+                <small>
+                    Veuillez insérer une photo
+                    avec un fond neutre.
+                </small>
+
+            </div>
+
+        </label>
+
+
+        <div class="sidebar-section">
+
+            <h3>Contacts</h3>
+
+            <div
+            class="editable"
+            contenteditable="true"
+            data-placeholder="Email">
+            </div>
+
+            <div
+            class="editable"
+            contenteditable="true"
+            data-placeholder="Téléphone">
+            </div>
+
+            <div
+            class="editable"
+            contenteditable="true"
+            data-placeholder="Ville, Pays, Rue">
+            </div>
+
+        </div>
+
+
+
+        <div class="sidebar-section">
+
+            <h3>Langues</h3>
+
+            <div
+            class="editable"
+            contenteditable="true"
+
+            data-placeholder="Ex : Arabe (natif), Français (courant), Anglais (intermédiaire)">
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-section">
+
+            <h3>Loisirs</h3>
+
+            <div
+            class="editable"
+            contenteditable="true"
+
+            data-placeholder="Ex : Lecture, Sport, Bénévolat...">
+            </div>
+
+        </div>
+
+
+
+        <div class="sidebar-section">
+
+            <h3>Compétences</h3>
+
+            <div
+            class="editable"
+            contenteditable="true"
+
+            data-placeholder="Compétences techniques et relationnelles">
+            </div>
+
+        </div>
+
+
+    </aside>
+
+
+
+
+
+    <!-- RIGHT COLUMN -->
+
+    <main class="cv-main">
+
+        <h1
+        class="cv-name editable"
+
+        contenteditable="true"
+
+        data-placeholder="NOM Prénom">
+
+        </h1>
+
+
+
+        <section class="cv-section fixed">
+
+            <h2>PROFILE</h2>
+
+            <div
+
+            class="editable"
+
+            contenteditable="true"
+
+            data-placeholder="Étudiant(e) en [année] année de [Filière] à [Nom de l'école], je souhaite mettre en pratique mes connaissances académiques, développer mes compétences techniques et contribuer activement à des projets professionnels afin d'acquérir une expérience significative dans le domaine de [domaine].">
+
+            </div>
+
+        </section>
+
+
+
+
+
+        <section class="cv-section dynamic">
+
+            <div class="section-header">
+
+                <h2>PROJECT</h2>
+
+                <div class="section-actions no-print">
+
+                    <button class="move-up">↑</button>
+
+                    <button class="move-down">↓</button>
+
+                    <button class="remove-section">
+                        ✕
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+            class="editable"
+
+            contenteditable="true"
+
+            data-placeholder="Décrivez vos projets académiques ou personnels">
+            </div>
+
+        </section>
+
+
+
+
+
+        <section class="cv-section dynamic" data-alt-title="FORMATION">
+
+            <div class="section-header">
+
+                <h2 class="edu-title">
+
+                    EDUCATION
+
+                </h2>
+
+                <div class="section-actions no-print">
+
+                    <button class="move-up">↑</button>
+
+                    <button class="move-down">↓</button>
+
+                    <button class="remove-section">
+                        ✕
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+                class="editable"
+
+                id="educationContent"
+
+                contenteditable="true"
+
+                data-placeholder="[Nom de l'école / Université] – [Ville]
+
+                Étudiant(e) en [1er/2e/3e] année – [Filière / Spécialisation] - présent
+
+                certificats - année (le cas échéant)
+
+                Baccalauréat en [Série de Bac] - année">
+
+            </div>
+
+        </section>
+
+
+
+
+
+        <section class="cv-section dynamic">
+
+            <div class="section-header">
+
+                <h2>EXPÉRIENCE</h2>
+
+                <div class="section-actions no-print">
+
+                    <button class="move-up">↑</button>
+
+                    <button class="move-down">↓</button>
+
+                    <button class="remove-section">
+                        ✕
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="editable"
+
+                contenteditable="true"
+
+                data-placeholder="(Si vous avez une expérience professionnelle antérieure, veuillez l'indiquer ici, ainsi que l'année.)">
+
+            </div>
+
+        </section>
+
+
+
+
+
+        <section class="cv-section dynamic">
+
+            <div class="section-header">
+
+                <h2>STAGE</h2>
+
+                <div class="section-actions no-print">
+
+                    <button class="move-up">↑</button>
+
+                    <button class="move-down">↓</button>
+
+                    <button class="remove-section">
+                        ✕
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+
+            class="editable"
+
+            contenteditable="true"
+
+            data-placeholder="[nom du stage et l'entreprise] - année (le cas échéant)">
+
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+    </div> <!-- cv-template -->
+
+    </div> <!-- cvTemplateArea -->
+
+    </div> <!-- modal-content -->
+
+    </div> <!-- builderModal -->
+
+        <!-- LETTRE DE MOTIVATION MODAL -->
+        <div id="letterBuilderModal" class="modal">
+            <div class="modal-content builder-content">
+                <span class="close-modal" id="closeLetterBuilder">&times;</span>
+                
+                <div id="letterTemplateArea">
+                    <div class="cv-toolbar no-print">
+                        <button id="downloadLetter" class="btn-primary">
+                            Télécharger la Lettre
+                        </button>
+                    </div>
+
+                    <!-- Letter Container Layout matching image_2d5fdd.png -->
+                    <div class="letter-template" id="letterTemplate">
+                        
+                        <!-- Top Header: Location and Date -->
+                        <div class="letter-row text-right">
+                            <span class="editable inline-editable" contenteditable="true">[Lieu]</span>, le 
+                            <span class="editable inline-editable" contenteditable="true">[jj/mm/aaaa]</span>
+                        </div>
+
+                        <!-- Left Block: Sender Info -->
+                        <div class="letter-section sender-info">
+                            <div class="editable" contenteditable="true">[Prénom] [NOM]</div>
+                            <div class="editable" contenteditable="true">[Adresse]</div>
+                            <div class="editable" contenteditable="true">[Numéro de téléphone]</div>
+                            <div class="editable" contenteditable="true">[Adresse e-mail]</div>
+                        </div>
+
+                        <!-- Right Block: Recipient Info -->
+                        <div class="letter-section recipient-info">
+                            <p>À l'attention de :</p>
+                            <div class="editable" contenteditable="true">[Nom de l'entreprise / Établissement]</div>
+                            <div class="editable" contenteditable="true">[Lieu du siège de l'entreprise]</div>
+                        </div>
+
+                        <!-- Subject -->
+                        <div class="letter-section subject-line">
+                            <div class="editable" contenteditable="true"><strong>Objet :</strong> Lettre de motivation en vue d'un stage [d'initiation / d'application / de fin d'études]</div>
+                        </div>
+
+                        <!-- Salutation -->
+                        <div class="letter-section salutation">
+                            <div class="editable" contenteditable="true">Madame, Monsieur,</div>
+                        </div>
+
+                        <!-- Core Content Paragraphs -->
+                        <div class="letter-body">
+                            
+                            <!-- Paragraph 1 -->
+                            <div class="letter-para">
+                                <div class="editable" contenteditable="true">Je me permets de vous adresser ma candidature pour un stage [d'initiation / d'application / de fin d'études] au sein de votre entreprise pour une durée de [durée du stage].</div>
+                            </div>
+
+                            <!-- Paragraph 2 -->
+                            <div class="letter-para">
+                                <div class="editable" contenteditable="true">Actuellement étudiant(e) en [filière] à [école] et titulaire d'un [baccalauréat ou autre diplôme], je poursuis mon parcours académique afin de développer mes compétences dans le domaine du [domaine d'études].</div>
+                            </div>
+
+                            <!-- Paragraph 3 -->
+                            <div class="letter-para">
+                                <div class="editable" contenteditable="true">Votre entreprise retient particulièrement mon attention en raison de sa réputation dans le domaine de [domaine d'activité] et de votre expertise en matière de [expertises ou projets précis de l'entreprise]. L'intérêt que vous portez à [valeurs ou services de l'entreprise] correspond tout à fait à mon projet professionnel.</div>
+                            </div>
+
+                            <!-- Paragraph 4 -->
+                            <div class="letter-para">
+                                <div class="editable" contenteditable="true">Particulièrement motivé(e) par ce secteur, je souhaite mettre en pratique les connaissances théoriques acquises lors de mes études, notamment en [citer 1 ou 2 compétences clés]. Sérieux(se), rigoureux(se) et dynamique, je suis convaincu(e) que mes compétences seront un atout pour votre équipe et que ce stage représente pour moi une opportunité unique d'approfondir mes connaissances.</div>
+                            </div>
+
+                            <!-- Paragraph 5 -->
+                            <div class="letter-para">
+                                <div class="editable" contenteditable="true">Je me tiens à votre entière disposition pour toute information complémentaire ou pour un éventuel entretien. En vous remerciant par avance de l'attention que vous porterez à ma candidature, je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.</div>
+                            </div>
+
+                        </div>
+
+                        <!-- Footer Signatures -->
+                        <div class="letter-footer text-right">
+                            <div class="editable" contenteditable="true">[NOM Prénom]</div>
+                            <div class="editable" contenteditable="true">[Signature]</div>
+                        </div>
+
+                    </div> <!-- letter-template -->
+                </div> <!-- letterTemplateArea -->
+            </div> <!-- modal-content -->
+        </div> <!-- letterBuilderModal -->
+
+        <!-- RAPPORT BUILDER MODAL -->
+
+        <div id="reportBuilderModal" class="modal">
+
+            <div class="modal-content builder-content report-builder-content">
+
+                <span class="close-modal" id="closeReportBuilder">
+                    &times;
+                </span>
+
+                <div class="report-toolbar no-print">
+
+                    <button id="downloadReport" class="btn-primary">
+                        Télécharger le Rapport
+                    </button>
+
+                    <button id="addPageBtn">
+                        + Nouvelle Page
+                    </button>
+
+                    <button id="addTableBtn">
+                        + Tableau
+                    </button>
+
+                    <label class="image-btn">
+
+                        + Image
+
+                        <input
+                            type="file"
+                            id="imageUploader"
+                            accept="image/*"
+                            hidden>
+
+                    </label>
+
+                    <select id="fontSizeSelector">
+
+                        <option value="11">
+                            11 pt
+                        </option>
+
+                        <option value="12">
+                            12 pt
+                        </option>
+
+                        <option value="13">
+                            13 pt
+                        </option>
+
+                        <option value="14">
+                            14 pt
+                        </option>
+
+                        <option value="16">
+                            16 pt
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div id="reportContainer">
+
+                    <!-- COVER PAGE -->
+
+                    <div class="report-page cover-page">
+                        <div class="page-controls">
+
+                            <button class="move-up">↑</button>
+
+                            <button class="move-down">↓</button>
+
+                            <button class="delete-page">🗑</button>
+
+                        </div>
+                        <label class="logo-upload">
+
+                            <input
+                                type="file"
+                                accept="image/*"
+                                class="logoInput"
+                                hidden>
+
+                            <img class="logoPreview">
+
+                            <div class="logoPlaceholder">
+                                Logo Université
+                            </div>
+
+                        </label>
+
+                        <div
+                            class="editable"
+                            contenteditable="true">
+
+                            NOM DE L'UNIVERSITÉ
+
+                        </div>
+
+                        <div
+                            class="editable"
+                            contenteditable="true">
+
+                            Filière
+
+                        </div>
+
+                    <div class="report-title-box">
+
+                        <div class="report-main-title">
+
+                            RAPPORT DE STAGE
+
+                        </div>
+
+                        <div
+                        class="editable report-subtitle"
+                        contenteditable="true">
+
+                        Titre du rapport
+
+                        </div>
+
+                    </div>
+
+                    <div class="cover-info-row">
+
+                        <div class="cover-left">
+
+                            <strong>Elaboré par :</strong>
+
+                            <div
+                            class="editable"
+                            contenteditable="true">
+
+                            NOM Prénom
+
+                            </div>
+
+                        </div>
+
+                        <div class="cover-right">
+
+                            <strong>Encadrant :</strong>
+
+                            <div
+                            class="editable"
+                            contenteditable="true">
+
+                            Nom Encadrant
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="academic-year">
+
+                        Année universitaire :
+
+                        <span
+                        class="editable"
+                        contenteditable="true">
+
+                        2025-2026
+
+                        </span>
+
+                    </div>
+                        
+
+                    </div>
+
+                    <!-- REMERCIEMENTS -->
+                    <div class="report-page">
+                        <div class="page-controls">
+                            <button class="move-up">↑</button>
+                            <button class="move-down">↓</button>
+                            <button class="delete-page">🗑</button>
+                        </div>
+
+                        <h2 class="page-title">Remerciements</h2>
+
+                        <div class="editable page-content" contenteditable="true">
+                        </div>
+                    </div>
+
+                    <!-- DEDICACE -->
+                    <div class="report-page">
+                        <div class="page-controls">
+                            <button class="move-up">↑</button>
+                            <button class="move-down">↓</button>
+                            <button class="delete-page">🗑</button>
+                        </div>
+
+                        <h2 class="page-title">Dédicace</h2>
+
+                        <div class="editable page-content" contenteditable="true">
+                        </div>
+                    </div>
+
+                    <!-- LISTE DES ABREVIATIONS -->
+                    <div class="report-page">
+                        <div class="page-controls">
+                            <button class="move-up">↑</button>
+                            <button class="move-down">↓</button>
+                            <button class="delete-page">🗑</button>
+                        </div>
+
+                        <h2 class="page-title">Liste des abréviations</h2>
+
+                        <div class="editable page-content" contenteditable="true">
+                        </div>
+                    </div>
+                    <!-- LISTE DES TABLEAUX -->
+                    <div class="report-page">
+                        <div class="page-controls">
+                            <button class="move-up">↑</button>
+                            <button class="move-down">↓</button>
+                            <button class="delete-page">🗑</button>
+                        </div>
+
+                        <h2 class="page-title">
+                            Liste des tableaux
+                        </h2>
+
+                        <div class="editable page-content" contenteditable="true"></div>
+                    </div>
+
+                    <!-- LISTE DES FIGURES -->
+                    <div class="report-page">
+                        <div class="page-controls">
+                            <button class="move-up">↑</button>
+                            <button class="move-down">↓</button>
+                            <button class="delete-page">🗑</button>
+                        </div>
+
+                        <h2 class="page-title">
+                            Liste des figures
+                        </h2>
+
+                        <div class="editable page-content" contenteditable="true"></div>
+                    </div>
+
+
+                    <!-- SOMMAIRE -->
+
+                    <div class="report-page">
+
+                        <div class="page-controls">
+
+                        <button class="move-up">↑</button>
+
+                        <button class="move-down">↓</button>
+
+                        <button class="delete-page">🗑</button>
+
+                    </div>
+
+                        <h2 class="page-title">
+                            SOMMAIRE
+                        </h2>
+
+                        <div id="sommaireContent">
+                        </div>
+
+                    </div>
+
+                    <!-- INTRODUCTION -->
+
+                    <div class="report-page">
+
+                        <div class="page-controls">
+
+                            <button class="move-up">↑</button>
+
+                            <button class="move-down">↓</button>
+
+                            <button class="delete-page">🗑</button>
+
+                        </div>
+
+                        <div class="page-header">
+
+                            <h2
+                                class="page-title editable"
+                                contenteditable="true">
+
+                                Introduction
+
+                            </h2>
+
+                        </div>
+
+                        <div
+                            class="editable page-content"
+                            contenteditable="true">
+
+                        </div>
+
+                    </div>
+
+                    <!-- ORGANISME -->
+                    <div class="report-page image-enabled">
+
+                        <div class="page-controls">
+                            <button class="move-up">↑</button>
+                            <button class="move-down">↓</button>
+                            <button class="delete-page">🗑</button>
+                        </div>
+
+                        <h2 class="page-title editable" contenteditable="true">
+                            Présentation de l'Organisme d'Accueil
+                        </h2>
+
+                        <div class="editable page-content" contenteditable="true"></div>
+
+                    </div>
+
+                
+                    <!-- TACHES -->
+                <div class="report-page image-enabled">
+
+                    <div class="page-controls">
+                        <button class="move-up">↑</button>
+                        <button class="move-down">↓</button>
+                        <button class="delete-page">🗑</button>
+                    </div>
+
+                    <h2 class="page-title editable" contenteditable="true">
+                        Tâches Effectuées
+                    </h2>
+
+
+                    <div class="editable page-content" contenteditable="true"></div>
+
+                </div>
+
+                <!-- COMPETENCES -->
+                <div class="report-page image-enabled">
+
+                    <div class="page-controls">
+                        <button class="move-up">↑</button>
+                        <button class="move-down">↓</button>
+                        <button class="delete-page">🗑</button>
+                    </div>
+
+                    <h2 class="page-title editable" contenteditable="true">
+                        Compétences Acquises
+                    </h2>
+
+
+                    <div class="editable page-content" contenteditable="true"></div>
+
+                </div>
+
+                    <!-- CONCLUSION -->
+
+                    <div class="report-page">
+
+                        <div class="page-controls">
+
+                            <button class="move-up">↑</button>
+
+                            <button class="move-down">↓</button>
+
+                            <button class="delete-page">🗑</button>
+
+                        </div>
+
+                        <h2
+                            class="page-title editable"
+                            contenteditable="true">
+
+                            Conclusion
+
+                        </h2>
+
+                        <div
+                            class="editable page-content"
+                            contenteditable="true">
+
+                        </div>
+
+                    </div>
+
+                    <!-- REFERENCES -->
+                    <div class="report-page">
+                        <div class="page-controls">
+                            <button class="move-up">↑</button>
+                            <button class="move-down">↓</button>
+                            <button class="delete-page">🗑</button>
+                        </div>
+
+                        <h2 class="page-title">
+                            Références
+                        </h2>
+
+                        <div class="editable page-content" contenteditable="true"></div>
+                    </div>
+
+                    <!-- ANNEXES -->
+                    <div class="report-page">
+                        <div class="page-controls">
+                            <button class="move-up">↑</button>
+                            <button class="move-down">↓</button>
+                            <button class="delete-page">🗑</button>
+                        </div>
+
+                        <h2 class="page-title">
+                            Annexes
+                        </h2>
+
+                        <div class="editable page-content" contenteditable="true"></div>
+                    </div>
+
+                    <!-- TABLE DES MATIERES -->
+                    <div class="report-page">
+                        <div class="page-controls">
+                            <button class="move-up">↑</button>
+                            <button class="move-down">↓</button>
+                            <button class="delete-page">🗑</button>
+                        </div>
+
+                        <h2 class="page-title">
+                            Table des matières
+                        </h2>
+
+                        <div id="tableMatiereContent"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+        <script src="script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    </body>
+</html>
