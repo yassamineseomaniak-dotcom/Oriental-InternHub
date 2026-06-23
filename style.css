@@ -1470,3 +1470,54 @@ footer {
         padding: 0.2rem 0.5rem;
     }
 }
+
+/* ===== REPORT LOGO UPLOAD ===== */
+.logo-upload {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 25px;
+    cursor: pointer;
+    position: relative;
+}
+
+.logo-upload img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: none;  /* Caché par défaut */
+}
+
+.logo-upload .logoPlaceholder {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed #999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+    border-radius: 8px;
+    background: #f8fafc;
+    transition: 0.3s;
+}
+
+/* Quand une image est chargée, on cache le placeholder */
+.logo-upload.has-logo .logoPlaceholder {
+    display: none !important;
+}
+
+.logo-upload.has-logo img {
+    display: block !important;
+}
+
+/* Version print - toujours cacher le placeholder si un logo est présent */
+@media print {
+    .logo-upload.has-logo .logoPlaceholder {
+        display: none !important;
+    }
+    
+    .logo-upload.has-logo img {
+        display: block !important;
+    }
+}
+
