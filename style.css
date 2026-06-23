@@ -293,18 +293,29 @@ footer {
 @media (max-width: 768px) {
 
     .navbar {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .company-grid,
-    .resources-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column;   /* logo row, then links row */
+        align-items: flex-start;  /* logo pinned top-left */
+        gap: 0.6rem;
     }
 
     .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
+        width: 100%;
+        overflow-x: auto;                   /* enables left/right swipe */
+        -webkit-overflow-scrolling: touch;  /* smooth momentum on iOS */
+        scrollbar-width: none;              /* hide scrollbar (Firefox) */
+        flex-wrap: nowrap;                  /* force one row, no wrapping */
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none; /* hide scrollbar (Chrome/Safari) */
+    }
+
+    .nav-links li {
+        flex-shrink: 0; /* each item keeps its natural width so the row overflows and scrolls */
+    }
+
+    .nav-links a {
+        white-space: nowrap; /* keep link text on one line */
     }
 }
 
@@ -747,60 +758,114 @@ background:#CBD5E1;
 }
 
 /* PRINT STYLES FOR DOWNLOADING */
+
 @media print {
-    /* Force browsers to print background colors and layouts */
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
 
-    /* Hide EVERYTHING on the page except the CV template modal content */
-    body * {
-        visibility: hidden;
+    /* Hide everything by default */
+    body:not(.printing-report) > * {
+    display: none !important;
+}
+
+    /* CV print mode */
+    body.printing-cv #builderModal {
+        display: flex !important;
+        position: fixed !important;
+        inset: 0 !important;
+        background: white !important;
+        z-index: 99999 !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        overflow: visible !important;
     }
 
-    /* Target the template content wrapper and make it visible */
-    #builderModal, 
-    #builderModal .modal-content, 
-    #cvTemplateArea, 
-    #cvTemplate, 
-    #cvTemplate * {
-        visibility: visible;
-    }
-
-    /* Reposition the template perfectly onto the print page */
-    #builderModal {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: auto;
-        background: transparent !important;
+    body.printing-cv #builderModal .modal-content {
         display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        background: white !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
+    /* Letter print mode */
+    body.printing-letter #letterBuilderModal {
+        display: flex !important;
+        position: fixed !important;
+        inset: 0 !important;
+        background: white !important;
+        z-index: 99999 !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        overflow: visible !important;
+    }
+
+    body.printing-letter #letterBuilderModal .modal-content {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        background: white !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Always hide the other modal when printing one */
+    body.printing-cv #letterBuilderModal,
+    body.printing-cv #reportBuilderModal,
+    body.printing-cv #formModal,
+    body.printing-letter #builderModal,
+    body.printing-letter #reportBuilderModal,
+    body.printing-letter #formModal {
+        display: none !important;
+    }
+
+    /* Hide UI controls */
+    .no-print,
+    .section-actions,
+    .cv-toolbar,
+    .close-modal,
+    .page-controls,
+    header,
+    footer,
+    .hero,
+    #companies,
+    #directory,
+    #resources,
+    #help {
+        display: none !important;
+    }
+
+    /* Clean up template containers */
     .builder-content {
-        background: transparent !important;
+        background: white !important;
         padding: 0 !important;
         box-shadow: none !important;
         max-height: none !important;
         overflow: visible !important;
     }
 
-    .cv-template {
+    .cv-template,
+    .letter-template {
         box-shadow: none !important;
         margin: 0 !important;
         border: none !important;
-    }
-
-    /* Completely strip away edit interfaces and buttons */
-    .no-print, 
-    .section-actions, 
-    .cv-toolbar, 
-    .close-modal {
-        display: none !important;
+        width: 210mm !important;
     }
 }
+
 
 /* --- LETTRE DE MOTIVATION SPECIFIC STYLES --- */
 .letter-template {
@@ -897,26 +962,7 @@ background:#CBD5E1;
     color: #1E293B !important;
 }
 
-/* Append layout visibility rules to your existing print media system */
-@media print {
-    #letterBuilderModal,
-    #letterBuilderModal .modal-content,
-    #letterTemplateArea,
-    #letterTemplate,
-    #letterTemplate * {
-        visibility: visible;
-    }
-    
-    #letterBuilderModal {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: auto;
-        background: transparent !important;
-        display: block !important;
-    }
-}
+
 
 
 .report-title-box{
@@ -1215,4 +1261,107 @@ background:#CBD5E1;
 
 .resources-note strong {
     color: var(--text);
+}
+
+
+
+@media print {
+
+    body:not(.printing-report) > * {
+    display: none !important;
+}
+
+    body.printing-report #reportBuilderModal {
+        display:block !important;
+        position:static !important;
+        background:white !important;
+        overflow:visible !important;
+        height:auto !important;
+    }
+
+    body.printing-report #reportBuilderModal .modal-content {
+        display:block !important;
+        width:100% !important;
+        max-width:none !important;
+        max-height:none !important;
+        overflow:visible !important;
+        box-shadow:none !important;
+        border-radius:0 !important;
+        padding:0 !important;
+    }
+
+}
+
+/* REPORT PRINT MODE */
+
+body.printing-report #reportBuilderModal {
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    background: white !important;
+    overflow: visible !important;
+    height: auto !important;
+    width: 100% !important;
+}
+
+body.printing-report #reportBuilderModal .modal-content {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+body.printing-report #reportContainer {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+body.printing-report .report-toolbar,
+body.printing-report .page-controls,
+body.printing-report .delete-table,
+body.printing-report .close-modal {
+    display: none !important;
+}
+
+body.printing-report .report-page {
+    width: 210mm !important;
+    min-height: 297mm !important;
+
+    margin: 0 auto !important;
+
+    box-shadow: none !important;
+    border: none !important;
+
+    page-break-after: always !important;
+    break-after: page !important;
+
+    overflow: visible !important;
+}
+
+body.printing-report .report-page:last-child {
+    page-break-after: auto !important;
+}
+
+body.printing-report .page-content {
+    overflow: visible !important;
+}
+
+body.printing-report .report-table {
+    page-break-inside: avoid !important;
+}
+
+body.printing-report img,
+body.printing-report .logoPreview,
+body.printing-report .pageImagePreview,
+body.printing-report .floating-image {
+    max-width: 100% !important;
+    height: auto !important;
 }
