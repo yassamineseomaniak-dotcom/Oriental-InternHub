@@ -3397,29 +3397,6 @@ generateSommaire();
 
 
 
-document.getElementById('addTableBtn').addEventListener('click', () => {
-
-    if (!lastFocusedContent) {
-        alert("Cliquez d'abord dans le contenu d'une page avant d'ajouter un tableau.");
-        return;
-    }
-
-    const table = document.createElement('table');
-    table.className = 'report-table';
-
-    table.innerHTML = `
-        <tr>
-            <th contenteditable="true">Titre</th>
-            <th contenteditable="true">Titre</th>
-        </tr>
-        <tr>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-        </tr>
-    `;
-
-    lastFocusedContent.appendChild(table);
-});
 
 
 let lastFocusedContent = null;
@@ -3736,3 +3713,80 @@ if (downloadReportBtn) {
     });
 
 }
+
+// ============================================================
+// GESTION DU LOGO DANS LE RAPPORT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Gestion du logo dans la page de couverture
+    document.addEventListener('change', function(e) {
+        if (e.target.classList.contains('logoInput')) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const label = e.target.closest('.logo-upload');
+            if (!label) return;
+            
+            const reader = new FileReader();
+            reader.onload = ev => {
+                const img = label.querySelector('.logoPreview');
+                if (img) {
+                    img.src = ev.target.result;
+                    // Ajouter la classe has-logo pour cacher le placeholder
+                    label.classList.add('has-logo');
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Gestion des images dans les pages du rapport
+    document.addEventListener('change', function(e) {
+        if (e.target.classList.contains('pageImageInput')) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const label = e.target.closest('.page-image-upload');
+            if (!label) return;
+            
+            const reader = new FileReader();
+            reader.onload = ev => {
+                const img = label.querySelector('.pageImagePreview');
+                const placeholder = label.querySelector('.pageImagePlaceholder');
+                if (img) {
+                    img.src = ev.target.result;
+                    img.style.display = 'block';
+                }
+                if (placeholder) {
+                    placeholder.style.display = 'none';
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+// Ajoutez cette fonction pour réinitialiser le logo
+function resetLogo(label) {
+    const img = label.querySelector('.logoPreview');
+    const fileInput = label.querySelector('.logoInput');
+    
+    if (img) {
+        img.src = '';
+        img.style.display = 'none';
+    }
+    if (fileInput) {
+        fileInput.value = '';
+    }
+    label.classList.remove('has-logo');
+}
+
+// Exemple d'utilisation (double-clic pour supprimer)
+document.addEventListener('dblclick', function(e) {
+    const label = e.target.closest('.logo-upload');
+    if (label && label.classList.contains('has-logo')) {
+        if (confirm('Supprimer le logo ?')) {
+            resetLogo(label);
+        }
+    }
+});
