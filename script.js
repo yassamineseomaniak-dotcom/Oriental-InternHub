@@ -1,5 +1,3 @@
-
-
 // Mapping officiel des sous-secteurs vers les secteurs généraux
 const SECTOR_MAPPING = {
     // 1. Informatique / Tech
@@ -3144,9 +3142,12 @@ if (searchInput) {
     }
 
     // Print / Download CV
+    
     if (downloadBtn) {
         downloadBtn.addEventListener("click", () => {
+            document.body.classList.add("printing-cv");
             window.print();
+            setTimeout(() => document.body.classList.remove("printing-cv"), 500);
         });
     }
 
@@ -3254,7 +3255,9 @@ window.addEventListener('click', (e) => {
 // Download/Print functional workflow matching your CV pipeline
 if (downloadLetterBtn) {
     downloadLetterBtn.addEventListener('click', () => {
+        document.body.classList.add("printing-letter");
         window.print();
+        setTimeout(() => document.body.classList.remove("printing-letter"), 500);
     });
 }
 
@@ -3653,50 +3656,8 @@ document.addEventListener('click', function(e){
 });
 
 
-const downloadReportBtn =
-document.getElementById('downloadReport');
 
-if(downloadReportBtn){
-
-downloadReportBtn.addEventListener(
-'click',
-function(){
-
-updatePageNumbers();
-generateSommaire();
-
-const element =
-document.getElementById(
-'reportContainer'
-);
-
-html2pdf()
-.set({
-    margin:10,
-    filename:'rapport-stage.pdf',
-    image:{
-        type:'jpeg',
-        quality:1
-    },
-    html2canvas:{
-        scale:2
-    },
-    jsPDF:{
-        unit:'mm',
-        format:'a4',
-        orientation:'portrait'
-    }
-})
-.from(element)
-.save();
-
-});
-
-}
-
-
-
-
+  
 
 function enableImageInteractions(){
 
@@ -3747,5 +3708,31 @@ document.querySelectorAll(".floating-image")
     }
 
 });
+
+}
+
+const downloadReportBtn = document.getElementById("downloadReport");
+
+if (downloadReportBtn) {
+
+    downloadReportBtn.addEventListener("click", () => {
+
+        document.body.classList.add("printing-report");
+
+        if (typeof updatePageNumbers === "function") {
+            updatePageNumbers();
+        }
+
+        if (typeof generateSommaire === "function") {
+            generateSommaire();
+        }
+
+        window.print();
+
+        setTimeout(() => {
+            document.body.classList.remove("printing-report");
+        }, 1000);
+
+    });
 
 }
