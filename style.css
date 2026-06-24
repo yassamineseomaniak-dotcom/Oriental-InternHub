@@ -2353,3 +2353,107 @@ footer {
         font-size: 1.3rem !important;
     }
 }
+/* ============================================================
+   CORRECTION DES FILTRES SECTEUR - AFFICHAGE SUR PLUSIEURS LIGNES
+   ============================================================ */
+
+/* Tous les écrans - les filtres s'affichent sur plusieurs lignes */
+.directory-filters {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.6rem !important;
+    margin-bottom: 2rem !important;
+    justify-content: center !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    padding: 0 !important;
+    -webkit-overflow-scrolling: auto !important;
+    scrollbar-width: auto !important;
+    max-width: 100% !important;
+}
+
+/* Supprimer le scroll horizontal sur les filtres */
+.directory-filters::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* Les boutons restent sur plusieurs lignes */
+.sector-btn {
+    flex-shrink: 0 !important;
+    font-size: 0.85rem !important;
+    padding: 0.5rem 1rem !important;
+    white-space: nowrap !important;
+    border: none !important;
+    background: var(--surface-light) !important;
+    color: var(--text) !important;
+    border-radius: 999px !important;
+    cursor: pointer !important;
+    transition: 0.3s !important;
+}
+
+.sector-btn:hover,
+.sector-btn.active {
+    background: var(--primary) !important;
+    color: white !important;
+}
+
+/* Mobile - ajustement pour que les boutons s'affichent bien */
+@media (max-width: 768px) {
+    .directory-filters {
+        gap: 0.5rem !important;
+        justify-content: flex-start !important;
+        flex-wrap: wrap !important;
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+        padding: 0 !important;
+        margin-bottom: 1.5rem !important;
+        max-width: 100% !important;
+    }
+    
+    .sector-btn {
+        font-size: 0.8rem !important;
+        padding: 0.4rem 0.9rem !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* Très petits écrans */
+@media (max-width: 480px) {
+    .directory-filters {
+        gap: 0.4rem !important;
+        justify-content: flex-start !important;
+    }
+    
+    .sector-btn {
+        font-size: 0.75rem !important;
+        padding: 0.35rem 0.8rem !important;
+    }
+}
+
+/* ============================================================
+   SUPPRIMER LES RÈGLES CONFLICTUELLES ANCIENNES
+   ============================================================ */
+
+/* Annuler les règles qui forcent le scroll horizontal sur les filtres */
+@media (max-width: 768px) {
+    /* Annuler les anciennes règles de scroll */
+    .directory-filters {
+        flex-wrap: wrap !important;
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: auto !important;
+        scrollbar-width: auto !important;
+        padding: 0 !important;
+    }
+    
+    .directory-filters::-webkit-scrollbar {
+        display: none !important;
+    }
+    
+    /* S'assurer que les boutons ne sont pas en nowrap forcé */
+    .sector-btn {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+}
