@@ -3185,12 +3185,12 @@ if (downloadBtn) {
 }
 
     // ============================================================
-    // PHOTO UPLOAD PREVIEW - VERSION AMÉLIORÉE
+    // PHOTO UPLOAD PREVIEW - VERSION MOBILE COMPATIBLE
     // ============================================================
     if (upload && preview) {
-        upload.addEventListener("change", function(e) {
-            const file = e.target.files[0];
-            
+        
+        // Fonction pour gérer le fichier sélectionné
+        function handlePhotoUpload(file) {
             if (!file) {
                 console.log('Aucun fichier sélectionné');
                 return;
@@ -3199,7 +3199,14 @@ if (downloadBtn) {
             // Vérifier que c'est bien une image
             if (!file.type.startsWith('image/')) {
                 alert('Veuillez sélectionner une image (JPG, PNG, etc.)');
-                this.value = '';
+                upload.value = '';
+                return;
+            }
+            
+            // Vérifier la taille (max 5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                alert('L\'image est trop volumineuse (max 5MB)');
+                upload.value = '';
                 return;
             }
             
@@ -3207,30 +3214,49 @@ if (downloadBtn) {
             const reader = new FileReader();
             
             reader.onload = function(event) {
-                // Mettre à jour la prévisualisation
-                preview.src = event.target.result;
-                preview.style.display = 'block';
-                preview.style.width = '70px';
-                preview.style.height = '70px';
-                preview.style.objectFit = 'cover';
-                preview.style.borderRadius = '50%';
-                preview.style.border = '3px solid white';
-                
-                // Cacher le placeholder
-                const placeholder = document.querySelector(".photo-placeholder");
-                if (placeholder) {
-                    placeholder.style.display = 'none';
+                try {
+                    // Mettre à jour la prévisualisation
+                    preview.src = event.target.result;
+                    preview.style.display = 'block';
+                    preview.style.width = '70px';
+                    preview.style.height = '70px';
+                    preview.style.objectFit = 'cover';
+                    preview.style.borderRadius = '50%';
+                    preview.style.border = '3px solid white';
+                    
+                    // Cacher le placeholder
+                    const placeholder = document.querySelector(".photo-placeholder");
+                    if (placeholder) {
+                        placeholder.style.display = 'none';
+                    }
+                    
+                    console.log('Photo insérée avec succès !');
+                } catch (error) {
+                    console.error('Erreur lors de l\'insertion de la photo:', error);
+                    alert('Erreur lors de l\'insertion de la photo');
                 }
-                
-                console.log('Photo insérée avec succès !');
             };
             
             reader.onerror = function() {
                 alert('Erreur lors de la lecture du fichier');
+                upload.value = '';
             };
             
             // Lire le fichier comme URL de données
             reader.readAsDataURL(file);
+        }
+        
+        // Événement change - fonctionne sur tous les appareils
+        upload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            handlePhotoUpload(file);
+        });
+        
+        // Pour mobile : forcer le déclenchement de l'événement change
+        // si le navigateur ne le fait pas correctement
+        upload.addEventListener('click', function(e) {
+            // Forcer le reset du input pour permettre de resélectionner le même fichier
+            this.value = '';
         });
         
         // PERMETTRE DE SUPPRIMER LA PHOTO EN DOUBLE-CLIQUANT
@@ -3238,6 +3264,7 @@ if (downloadBtn) {
         if (photoContainer) {
             photoContainer.addEventListener('dblclick', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
                 
                 if (confirm('Supprimer la photo ?')) {
                     preview.src = '';
@@ -3250,6 +3277,36 @@ if (downloadBtn) {
                     
                     upload.value = '';
                     console.log('Photo supprimée');
+                }
+            });
+        }
+        
+        // OPTION: Drag & Drop pour mobile
+        if (photoContainer) {
+            photoContainer.addEventListener('touchstart', function(e) {
+                // Sur mobile, le double-clic est différent
+                let touchTimer;
+                if (e.touches.length === 1) {
+                    if (touchTimer) {
+                        clearTimeout(touchTimer);
+                        touchTimer = null;
+                        // Double tap détecté
+                        if (preview.src && preview.src !== '') {
+                            if (confirm('Supprimer la photo ?')) {
+                                preview.src = '';
+                                preview.style.display = 'none';
+                                const placeholder = document.querySelector('.photo-placeholder');
+                                if (placeholder) {
+                                    placeholder.style.display = 'flex';
+                                }
+                                upload.value = '';
+                            }
+                        }
+                    } else {
+                        touchTimer = setTimeout(() => {
+                            touchTimer = null;
+                        }, 300);
+                    }
                 }
             });
         }
