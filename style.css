@@ -3304,17 +3304,17 @@ footer {
         height: 100% !important;
     }
     
-    /* ================================================================
-       NOM - 24px (2rem)
+       /* ================================================================
+       NOM - 30px (2.5rem)
        ================================================================ */
     #cvTemplateArea .cv-main .cv-name {
-        font-size: 2rem !important; /* 24px en mobile */
+        font-size: 2.5rem !important; /* 30px en mobile */
         font-weight: 700 !important;
         border-bottom: 2px solid #2E384D !important;
         padding-bottom: 0.2rem !important;
         margin-bottom: 0.4rem !important;
         color: #1E293B !important;
-        min-height: 2.2rem !important;
+        min-height: 2.8rem !important;
         display: block !important;
         width: 100% !important;
         line-height: 1.2 !important;
@@ -3324,7 +3324,7 @@ footer {
         content: "NOM Prénom" !important;
         color: #94A3B8 !important;
         font-style: italic !important;
-        font-size: 1.6rem !important;
+        font-size: 2rem !important;
     }
     
     /* === TITRES DES SECTIONS === */
@@ -3459,14 +3459,14 @@ footer {
         padding: 0.5rem 0.5rem 0.3rem 0.4rem !important;
     }
     
-    /* === NOM - 22px sur très petit écran === */
+        /* === NOM - 26px sur très petit écran === */
     #cvTemplateArea .cv-main .cv-name {
-        font-size: 1.8rem !important;
-        min-height: 2rem !important;
+        font-size: 2.2rem !important; /* ~26px */
+        min-height: 2.5rem !important;
     }
     
     #cvTemplateArea .cv-main .cv-name:empty::before {
-        font-size: 1.4rem !important;
+        font-size: 1.8rem !important;
     }
     
     #cvTemplateArea .cv-main h2 {
