@@ -3073,7 +3073,7 @@ footer {
 }
 
 /* ============================================================
-   CV TEMPLATE - MOBILE 2 COLONNES (TAILLES DIFFÉRENCIÉES)
+   CV TEMPLATE - MOBILE 2 COLONNES (NOM 24px)
    ============================================================ */
 
 @media (max-width: 768px) {
@@ -3305,31 +3305,29 @@ footer {
     }
     
     /* ================================================================
-       TAILLES DE POLICE DIFFÉRENCIÉES
+       NOM - 24px (2rem)
        ================================================================ */
-    
-    /* === NOM - TRÈS GRAND (équivalent 16px) === */
     #cvTemplateArea .cv-main .cv-name {
-        font-size: 1.4rem !important;
+        font-size: 2rem !important; /* 24px en mobile */
         font-weight: 700 !important;
         border-bottom: 2px solid #2E384D !important;
         padding-bottom: 0.2rem !important;
         margin-bottom: 0.4rem !important;
         color: #1E293B !important;
-        min-height: 1.8rem !important;
+        min-height: 2.2rem !important;
         display: block !important;
         width: 100% !important;
-        line-height: 1.3 !important;
+        line-height: 1.2 !important;
     }
     
     #cvTemplateArea .cv-main .cv-name:empty::before {
         content: "NOM Prénom" !important;
         color: #94A3B8 !important;
         font-style: italic !important;
-        font-size: 1.2rem !important;
+        font-size: 1.6rem !important;
     }
     
-    /* === TITRES DES SECTIONS (équivalent 10px) === */
+    /* === TITRES DES SECTIONS === */
     #cvTemplateArea .cv-main h2 {
         font-size: 0.65rem !important;
         margin-bottom: 0.15rem !important;
@@ -3341,7 +3339,7 @@ footer {
         font-weight: 600 !important;
     }
     
-    /* === TEXTE DES SECTIONS - CONTENU (équivalent 11px) === */
+    /* === TEXTE DES SECTIONS === */
     #cvTemplateArea .cv-main .editable {
         font-size: 0.75rem !important;
         min-height: 0.7rem !important;
@@ -3461,14 +3459,14 @@ footer {
         padding: 0.5rem 0.5rem 0.3rem 0.4rem !important;
     }
     
-    /* === NOM - ENCORE PLUS GROS PROPORTIONNELLEMENT === */
+    /* === NOM - 22px sur très petit écran === */
     #cvTemplateArea .cv-main .cv-name {
-        font-size: 1.2rem !important;
-        min-height: 1.5rem !important;
+        font-size: 1.8rem !important;
+        min-height: 2rem !important;
     }
     
     #cvTemplateArea .cv-main .cv-name:empty::before {
-        font-size: 1rem !important;
+        font-size: 1.4rem !important;
     }
     
     #cvTemplateArea .cv-main h2 {
