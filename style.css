@@ -1457,9 +1457,48 @@ body.printing-report #reportContainer {
         padding: 1.2rem;
     }
 
-    .cv-main .cv-name {
-        font-size: 1.6rem;
+    /* ============================================================
+   NOM - 30px SUR MOBILE (FORCÉ)
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Forcer le nom à 30px */
+    .cv-main .cv-name,
+    #cvTemplateArea .cv-main .cv-name,
+    .cv-template .cv-main .cv-name {
+        font-size: 30px !important;
+        font-weight: 700 !important;
+        min-height: 45px !important;
+        line-height: 1.2 !important;
+        border-bottom: 3px solid #2E384D !important;
+        padding-bottom: 8px !important;
+        margin-bottom: 12px !important;
+        color: #1E293B !important;
+        display: block !important;
+        width: 100% !important;
+        background: transparent !important;
+        outline: none !important;
     }
+    
+    .cv-main .cv-name:empty::before,
+    #cvTemplateArea .cv-main .cv-name:empty::before,
+    .cv-template .cv-main .cv-name:empty::before {
+        content: "NOM Prénom" !important;
+        color: #94A3B8 !important;
+        font-style: italic !important;
+        font-size: 24px !important;
+        font-weight: 600 !important;
+    }
+    
+    /* Forcer le contenu du nom quand il est rempli */
+    .cv-main .cv-name:not(:empty),
+    #cvTemplateArea .cv-main .cv-name:not(:empty),
+    .cv-template .cv-main .cv-name:not(:empty) {
+        font-size: 30px !important;
+        color: #1E293B !important;
+        font-weight: 700 !important;
+    }
+}
 
     .photo-placeholder,
     #photoPreview {
@@ -1572,10 +1611,7 @@ body.printing-report #reportContainer {
         padding: 0.8rem;
     }
 
-    .cv-main .cv-name {
-        font-size: 1.3rem;
-    }
-
+    
     .letter-template {
         padding: 1rem;
         font-size: 10pt;
@@ -2509,14 +2545,6 @@ footer {
     color: #1E293B !important;
 }
 
-.cv-main .cv-name {
-    font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
-    font-weight: 700 !important;
-    border-bottom: 3px solid #2E384D !important;
-    padding-bottom: 0.5rem !important;
-    margin-bottom: 1.5rem !important;
-    color: #1E293B !important;
-}
 
 .cv-main h2 {
     font-size: 1rem !important;
@@ -2622,10 +2650,6 @@ footer {
         padding: 1.5rem !important;
     }
     
-    .cv-main .cv-name {
-        font-size: 1.8rem !important;
-    }
-    
     .photo-placeholder,
     #photoPreview {
         width: 100px !important;
@@ -2685,10 +2709,7 @@ footer {
         width: 100% !important;
     }
     
-    .cv-main .cv-name {
-        font-size: 1.5rem !important;
-        margin-bottom: 1rem !important;
-    }
+
     
     .cv-main h2 {
         font-size: 0.9rem !important;
@@ -2939,10 +2960,7 @@ footer {
         padding: 0.8rem !important;
     }
     
-    .cv-main .cv-name {
-        font-size: 1.2rem !important;
-    }
-    
+
     .editable {
         font-size: 0.85rem !important;
         min-height: 1.2rem !important;
