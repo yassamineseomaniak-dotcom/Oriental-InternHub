@@ -3214,12 +3214,11 @@ footer {
         gap: 0 !important;
     }
     
-    /* ===== BOUTON FERMER ===== */
+   /* ===== BOUTON FERMER - VERSION CORRIGÉE ===== */
     #builderModal .close-modal {
         position: sticky !important;
         top: 0 !important;
         right: 0 !important;
-        float: right !important;
         font-size: 1.5rem !important;
         cursor: pointer !important;
         color: #64748B !important;
@@ -3228,10 +3227,13 @@ footer {
         z-index: 60 !important;
         border-radius: 0 0 0 8px !important;
         margin: 0 !important;
-        display: inline-block !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
         width: auto !important;
         line-height: 1.2 !important;
         flex-shrink: 0 !important;
+        margin-left: auto !important;
     }
     
     /* ===== ZONE DU CV ===== */
