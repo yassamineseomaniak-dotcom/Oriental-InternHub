@@ -3073,12 +3073,115 @@ footer {
 }
 
 /* ============================================================
-   CV TEMPLATE - VERSION MOBILE OPTIMISÉE
+   CV TEMPLATE - MOBILE & TABLETTE (2 COLONNES)
    ============================================================ */
 
+/* ===== TABLETTE (769px - 1024px) ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    
+    #builderModal .modal-content {
+        max-height: 95vh !important;
+        padding: 1rem !important;
+    }
+    
+    #builderModal .builder-content {
+        padding: 1rem !important;
+        max-height: 95vh !important;
+    }
+    
+    #builderModal .close-modal {
+        font-size: 1.8rem !important;
+        padding: 0.2rem 0.7rem !important;
+    }
+    
+    .cv-toolbar {
+        padding: 0.5rem !important;
+        gap: 0.5rem !important;
+    }
+    
+    .cv-toolbar button {
+        padding: 0.4rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+    
+    /* ===== CV - 2 COLONNES ===== */
+    .cv-template {
+        grid-template-columns: 200px 1fr !important;
+        max-height: 85vh !important;
+    }
+    
+    /* ===== SIDEBAR ===== */
+    .cv-sidebar {
+        padding: 1.2rem 1rem !important;
+        gap: 0.8rem !important;
+    }
+    
+    .cv-sidebar h3 {
+        font-size: 0.65rem !important;
+        padding-bottom: 0.25rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .cv-sidebar .editable {
+        font-size: 0.7rem !important;
+        min-height: 0.9rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .photo-placeholder {
+        width: 80px !important;
+        height: 80px !important;
+        font-size: 0.6rem !important;
+        padding: 0.4rem !important;
+    }
+    
+    .photo-placeholder small {
+        font-size: 0.45rem !important;
+    }
+    
+    #photoPreview {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    /* ===== MAIN ===== */
+    .cv-main {
+        padding: 1.2rem 1.2rem 0.8rem 1rem !important;
+    }
+    
+    .cv-main .cv-name {
+        font-size: 1.4rem !important;
+        padding-bottom: 0.25rem !important;
+        margin-bottom: 0.6rem !important;
+    }
+    
+    .cv-main h2 {
+        font-size: 0.65rem !important;
+        padding-bottom: 0.15rem !important;
+    }
+    
+    .cv-main .editable {
+        font-size: 0.7rem !important;
+        min-height: 0.8rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .cv-section {
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .section-actions button {
+        padding: 0.05rem 0.35rem !important;
+        font-size: 0.5rem !important;
+    }
+}
+
+/* ============================================================
+   MOBILE (<= 768px)
+   ============================================================ */
 @media (max-width: 768px) {
     
-    /* ===== MODAL CV - PLEIN ÉCRAN ===== */
+    /* ===== MODAL - PLEIN ÉCRAN ===== */
     #builderModal {
         padding: 0 !important;
         align-items: flex-start !important;
@@ -3117,10 +3220,10 @@ footer {
         top: 0 !important;
         right: 0 !important;
         float: right !important;
-        font-size: 1.3rem !important;
+        font-size: 1.5rem !important;
         cursor: pointer !important;
         color: #64748B !important;
-        padding: 0.05rem 0.5rem !important;
+        padding: 0.1rem 0.5rem !important;
         background: white !important;
         z-index: 60 !important;
         border-radius: 0 0 0 8px !important;
@@ -3147,19 +3250,19 @@ footer {
     .cv-toolbar {
         display: flex !important;
         flex-wrap: wrap !important;
-        gap: 0.2rem !important;
+        gap: 0.3rem !important;
         justify-content: center !important;
         align-items: center !important;
-        padding: 0.2rem 0.3rem !important;
-        margin: 0 0 0.2rem 0 !important;
+        padding: 0.3rem !important;
+        margin: 0 0 0.3rem 0 !important;
         background: white !important;
-        border-radius: 4px !important;
+        border-radius: 6px !important;
         flex-shrink: 0 !important;
     }
     
     .cv-toolbar button {
-        padding: 0.2rem 0.5rem !important;
-        font-size: 0.65rem !important;
+        padding: 0.3rem 0.7rem !important;
+        font-size: 0.7rem !important;
         border-radius: 4px !important;
         border: none !important;
         background: var(--primary) !important;
@@ -3171,14 +3274,14 @@ footer {
     
     #restoreContainer {
         display: flex !important;
-        gap: 0.15rem !important;
+        gap: 0.2rem !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
     }
     
     .restore-btn {
-        padding: 0.1rem 0.3rem !important;
-        font-size: 0.55rem !important;
+        padding: 0.15rem 0.4rem !important;
+        font-size: 0.6rem !important;
         background: #E2E8F0 !important;
         border: none !important;
         border-radius: 3px !important;
@@ -3186,92 +3289,72 @@ footer {
         color: #1E293B !important;
     }
     
-    /* ===== CV TEMPLATE - SCROLLABLE ===== */
+    /* ===== CV - 2 COLONNES SUR MOBILE ===== */
     .cv-template {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        height: 100% !important;
-        min-height: 0 !important;
+        display: grid !important;
+        grid-template-columns: 120px 1fr !important;
         background: white !important;
         border-radius: 4px !important;
         overflow: hidden !important;
         flex: 1 !important;
+        min-height: 0 !important;
+        height: 100% !important;
     }
     
-    /* ===== SIDEBAR - COMPACTE EN LIGNE ===== */
+    /* ===== SIDEBAR - GAUCHE (SOMBRE) ===== */
     .cv-sidebar {
-        order: 0 !important;
-        width: 100% !important;
-        padding: 0.3rem 0.5rem !important;
         background: #2E384D !important;
         color: #F8FAFC !important;
+        padding: 0.6rem 0.5rem !important;
         display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        gap: 0.15rem 0.4rem !important;
-        border-radius: 0 !important;
-        flex-shrink: 0 !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+        overflow-y: auto !important;
     }
     
-    .sidebar-section {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        gap: 0.15rem !important;
-        flex: 0 1 auto !important;
-        width: auto !important;
-        overflow: hidden !important;
-        margin: 0 !important;
-    }
-    
-    .sidebar-section h3 {
+    .cv-sidebar h3 {
         font-size: 0.5rem !important;
-        letter-spacing: 0.3px !important;
+        letter-spacing: 0.5px !important;
         text-transform: uppercase !important;
-        border-bottom: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
+        border-bottom: 1.5px solid var(--primary) !important;
+        padding-bottom: 0.15rem !important;
+        margin-bottom: 0.15rem !important;
         color: #F8FAFC !important;
-        opacity: 0.6 !important;
-        font-weight: 600 !important;
-        flex-shrink: 0 !important;
     }
     
-    .sidebar-section .editable {
+    .cv-sidebar .editable {
         color: #F8FAFC !important;
         font-size: 0.55rem !important;
         min-height: 0.6rem !important;
         padding: 0.05rem 0 !important;
-        line-height: 1.1 !important;
-        max-width: 100px !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
+        line-height: 1.2 !important;
     }
     
-    .sidebar-section .editable:empty::before {
+    .cv-sidebar .editable:empty::before {
         color: #94A3B8 !important;
         font-style: italic !important;
         font-size: 0.5rem !important;
     }
     
-    /* ===== PHOTO - MINIATURE ===== */
+    .sidebar-section {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.1rem !important;
+    }
+    
+    /* ===== PHOTO - PLUS PETITE ===== */
     .photo-container {
         display: flex !important;
-        flex-direction: row !important;
+        flex-direction: column !important;
         align-items: center !important;
         gap: 0.2rem !important;
-        margin: 0 !important;
+        margin-bottom: 0.2rem !important;
         cursor: pointer !important;
-        flex-shrink: 0 !important;
     }
     
     .photo-placeholder {
-        width: 32px !important;
-        height: 32px !important;
+        width: 50px !important;
+        height: 50px !important;
         border: 2px solid white !important;
         border-radius: 50% !important;
         display: flex !important;
@@ -3279,37 +3362,34 @@ footer {
         justify-content: center !important;
         align-items: center !important;
         text-align: center !important;
-        padding: 0.1rem !important;
-        font-size: 0.3rem !important;
+        padding: 0.3rem !important;
+        font-size: 0.45rem !important;
         background: rgba(255,255,255,0.05) !important;
         color: #F8FAFC !important;
-        flex-shrink: 0 !important;
     }
     
     .photo-placeholder small {
+        font-size: 0.35rem !important;
+        margin-top: 0.1rem !important;
+        opacity: 0.7 !important;
         display: none !important;
     }
     
     #photoPreview {
-        width: 32px !important;
-        height: 32px !important;
+        width: 50px !important;
+        height: 50px !important;
         object-fit: cover !important;
         border-radius: 50% !important;
         display: none !important;
         border: 2px solid white !important;
-        flex-shrink: 0 !important;
     }
     
-    /* ===== MAIN CONTENT - SCROLLABLE ===== */
+    /* ===== MAIN - DROITE (CLAIR) ===== */
     .cv-main {
-        order: 1 !important;
-        width: 100% !important;
-        padding: 0.4rem 0.6rem !important;
+        padding: 0.6rem 0.6rem 0.4rem 0.5rem !important;
         background: white !important;
         color: #1E293B !important;
-        flex: 1 !important;
         overflow-y: auto !important;
-        min-height: 0 !important;
         -webkit-overflow-scrolling: touch !important;
     }
     
@@ -3317,24 +3397,23 @@ footer {
         font-size: 0.9rem !important;
         font-weight: 700 !important;
         border-bottom: 2px solid #2E384D !important;
-        padding-bottom: 0.1rem !important;
-        margin-bottom: 0.2rem !important;
+        padding-bottom: 0.15rem !important;
+        margin-bottom: 0.3rem !important;
         color: #1E293B !important;
-        text-align: left !important;
     }
     
     .cv-main h2 {
-        font-size: 0.55rem !important;
-        margin-bottom: 0.05rem !important;
+        font-size: 0.5rem !important;
+        margin-bottom: 0.1rem !important;
         color: #2E384D !important;
         letter-spacing: 0.3px !important;
         text-transform: uppercase !important;
-        border-bottom: 1px solid #2E384D !important;
-        padding-bottom: 0.05rem !important;
+        border-bottom: 1.5px solid #2E384D !important;
+        padding-bottom: 0.1rem !important;
     }
     
     .cv-main .editable {
-        font-size: 0.6rem !important;
+        font-size: 0.55rem !important;
         min-height: 0.6rem !important;
         padding: 0.05rem 0 !important;
         color: #1E293B !important;
@@ -3349,11 +3428,9 @@ footer {
         font-size: 0.5rem !important;
     }
     
-    /* ===== SECTIONS - COMPACTES ===== */
+    /* ===== SECTIONS ===== */
     .cv-section {
-        margin-bottom: 0.2rem !important;
-        width: 100% !important;
-        overflow: hidden !important;
+        margin-bottom: 0.4rem !important;
     }
     
     .cv-section .section-header {
@@ -3367,11 +3444,10 @@ footer {
     .section-actions {
         display: flex !important;
         gap: 0.1rem !important;
-        flex-shrink: 0 !important;
     }
     
     .section-actions button {
-        padding: 0.03rem 0.2rem !important;
+        padding: 0.03rem 0.25rem !important;
         font-size: 0.4rem !important;
         border: 1px solid #CBD5E1 !important;
         border-radius: 2px !important;
@@ -3381,20 +3457,16 @@ footer {
         line-height: 1 !important;
     }
     
+    .section-actions button:hover {
+        background: #E2E8F0 !important;
+    }
+    
+    .section-actions .remove-section {
+        color: #DC2626 !important;
+    }
+    
     .cv-section.fixed .section-actions {
         display: none !important;
-    }
-    
-    /* ===== EMPÊCHER LE DÉBORDEMENT ===== */
-    .cv-template * {
-        max-width: 100% !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-    }
-    
-    /* ===== CACHER LES SECTIONS VIDES ===== */
-    .cv-section:has(.editable:empty) .section-header h2 {
-        opacity: 0.3 !important;
     }
 }
 
@@ -3408,65 +3480,148 @@ footer {
     }
     
     #builderModal .close-modal {
-        font-size: 1.1rem !important;
-        padding: 0.05rem 0.3rem !important;
+        font-size: 1.2rem !important;
+        padding: 0.05rem 0.4rem !important;
     }
     
     .cv-toolbar {
-        padding: 0.15rem !important;
-        gap: 0.15rem !important;
+        padding: 0.2rem !important;
+        gap: 0.2rem !important;
     }
     
     .cv-toolbar button {
-        padding: 0.15rem 0.35rem !important;
-        font-size: 0.55rem !important;
+        padding: 0.2rem 0.5rem !important;
+        font-size: 0.6rem !important;
     }
     
+    .restore-btn {
+        font-size: 0.5rem !important;
+        padding: 0.1rem 0.3rem !important;
+    }
+    
+    /* ===== CV - COLONNES ENCORE PLUS ÉTROITES ===== */
+    .cv-template {
+        grid-template-columns: 100px 1fr !important;
+    }
+    
+    /* ===== SIDEBAR ===== */
     .cv-sidebar {
-        padding: 0.2rem 0.3rem !important;
-        gap: 0.1rem 0.3rem !important;
+        padding: 0.4rem 0.3rem !important;
+        gap: 0.3rem !important;
     }
     
-    .sidebar-section h3 {
+    .cv-sidebar h3 {
         font-size: 0.4rem !important;
     }
     
-    .sidebar-section .editable {
+    .cv-sidebar .editable {
         font-size: 0.45rem !important;
-        max-width: 70px !important;
+        min-height: 0.5rem !important;
     }
     
-    .photo-placeholder,
+    .photo-placeholder {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 0.35rem !important;
+        padding: 0.2rem !important;
+    }
+    
     #photoPreview {
-        width: 26px !important;
-        height: 26px !important;
+        width: 40px !important;
+        height: 40px !important;
     }
     
+    /* ===== MAIN ===== */
     .cv-main {
-        padding: 0.25rem 0.4rem !important;
+        padding: 0.4rem 0.4rem 0.3rem 0.3rem !important;
     }
     
     .cv-main .cv-name {
         font-size: 0.75rem !important;
-        margin-bottom: 0.15rem !important;
-        padding-bottom: 0.05rem !important;
+        padding-bottom: 0.1rem !important;
+        margin-bottom: 0.2rem !important;
     }
     
     .cv-main h2 {
-        font-size: 0.45rem !important;
+        font-size: 0.4rem !important;
+        padding-bottom: 0.05rem !important;
     }
     
     .cv-main .editable {
-        font-size: 0.5rem !important;
-        min-height: 0.4rem !important;
+        font-size: 0.45rem !important;
+        min-height: 0.5rem !important;
+        line-height: 1.1 !important;
     }
     
     .cv-section {
-        margin-bottom: 0.15rem !important;
+        margin-bottom: 0.25rem !important;
     }
     
     .section-actions button {
         font-size: 0.35rem !important;
-        padding: 0.02rem 0.15rem !important;
+        padding: 0.02rem 0.2rem !important;
+    }
+}
+
+/* ============================================================
+   TRÈS GRANDS ÉCRANS - FORMAT A4 (inchangé)
+   ============================================================ */
+@media (min-width: 1025px) {
+    .cv-template {
+        width: 210mm !important;
+        min-height: 297mm !important;
+        grid-template-columns: 240px 1fr !important;
+        margin: 0 auto !important;
+        max-height: none !important;
+    }
+    
+    .cv-sidebar {
+        padding: 2rem 1.5rem !important;
+        gap: 1.5rem !important;
+    }
+    
+    .cv-sidebar h3 {
+        font-size: 0.9rem !important;
+    }
+    
+    .cv-sidebar .editable {
+        font-size: 0.9rem !important;
+        min-height: 1.6rem !important;
+    }
+    
+    .photo-placeholder {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    #photoPreview {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    .cv-main {
+        padding: 2rem 2rem 2rem 1.8rem !important;
+    }
+    
+    .cv-main .cv-name {
+        font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
+    }
+    
+    .cv-main h2 {
+        font-size: 1rem !important;
+    }
+    
+    .cv-main .editable {
+        font-size: 0.95rem !important;
+        min-height: 1.6rem !important;
+    }
+    
+    .cv-section {
+        margin-bottom: 1.2rem !important;
+    }
+    
+    .section-actions button {
+        padding: 0.15rem 0.5rem !important;
+        font-size: 0.7rem !important;
     }
 }
