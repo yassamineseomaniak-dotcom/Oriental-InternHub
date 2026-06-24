@@ -347,12 +347,15 @@
 
     <!-- TEMPLATE GENERATED HERE -->
      <div class="cv-toolbar no-print">
-
-    <button id="downloadCV" class="btn-primary">
-        Télécharger le CV
-    </button>
-
-    <div id="restoreContainer"></div>
+        <button id="downloadCV" class="btn-primary">Télécharger le CV</button>
+        <div id="restoreContainer"></div>
+        <div class="zoom-controls">
+            <button id="cvZoomOut" title="Zoom arrière">−</button>
+            <span class="zoom-level" id="cvZoomLevel">100%</span>
+            <button id="cvZoomIn" title="Zoom avant">+</button>
+            <button id="cvZoomReset" title="Réinitialiser" style="width:auto; padding: 0 10px; font-size:0.75rem;">↺</button>
+        </div>
+    </div>
 
 </div>
 
@@ -672,10 +675,14 @@
                 
                 <div id="letterTemplateArea">
                     <div class="cv-toolbar no-print">
-                        <button id="downloadLetter" class="btn-primary">
-                            Télécharger la Lettre
-                        </button>
-                    </div>
+    <button id="downloadLetter" class="btn-primary">Télécharger la Lettre</button>
+    <div class="zoom-controls">
+        <button id="letterZoomOut" title="Zoom arrière">−</button>
+        <span class="zoom-level" id="letterZoomLevel">100%</span>
+        <button id="letterZoomIn" title="Zoom avant">+</button>
+        <button id="letterZoomReset" title="Réinitialiser" style="width:auto; padding: 0 10px; font-size:0.75rem;">↺</button>
+    </div>
+</div>
 
                     <!-- Letter Container Layout matching image_2d5fdd.png -->
                     <div class="letter-template" id="letterTemplate">
@@ -763,6 +770,13 @@
                 </span>
 
                 <div class="report-toolbar no-print">
+
+                    <div class="zoom-controls">
+                        <button id="reportZoomOut" title="Zoom arrière">−</button>
+                        <span class="zoom-level" id="reportZoomLevel">100%</span>
+                        <button id="reportZoomIn" title="Zoom avant">+</button>
+                        <button id="reportZoomReset" title="Réinitialiser" style="width:auto; padding: 0 10px; font-size:0.75rem;">↺</button>
+                    </div>
 
                     <button id="downloadReport" class="btn-primary">
                         Télécharger le Rapport
