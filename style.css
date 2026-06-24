@@ -2353,6 +2353,7 @@ footer {
         font-size: 1.3rem !important;
     }
 }
+
 /* ============================================================
    CORRECTION DES FILTRES SECTEUR - AFFICHAGE SUR PLUSIEURS LIGNES
    ============================================================ */
@@ -2459,7 +2460,620 @@ footer {
 }
 
 /* ============================================================
-   CV TEMPLATE - OPTIMISATION MOBILE UNIQUEMENT
+   CV, LETTRE & RAPPORT - ADAPTATION COMPLÈTE
+   ============================================================ */
+
+/* ===== BASE - TOUS LES ÉCRANS ===== */
+.builder-content {
+    width: min(1000px, 97vw) !important;
+    max-height: 92vh !important;
+    overflow: auto !important;
+    padding: 1.5rem !important;
+    background: #F1F5F9 !important;
+}
+
+#cvTemplateArea,
+#letterTemplateArea,
+#reportContainer {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+/* ===== CV TEMPLATE ===== */
+.cv-template {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    margin: 0 auto !important;
+    background: white !important;
+    display: grid !important;
+    grid-template-columns: 1fr 2.2fr !important;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+}
+
+.cv-sidebar {
+    background: #2E384D !important;
+    color: #F8FAFC !important;
+    padding: 2rem 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+}
+
+.cv-main {
+    padding: 2rem 2rem 2rem 1.8rem !important;
+    background: white !important;
+    color: #1E293B !important;
+}
+
+.cv-main .cv-name {
+    font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
+    font-weight: 700 !important;
+    border-bottom: 3px solid #2E384D !important;
+    padding-bottom: 0.5rem !important;
+    margin-bottom: 1.5rem !important;
+    color: #1E293B !important;
+}
+
+.cv-main h2 {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    color: #2E384D !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+}
+
+/* ===== LETTER TEMPLATE ===== */
+.letter-template {
+    width: 100% !important;
+    max-width: 210mm !important;
+    min-height: auto !important;
+    margin: 0 auto !important;
+    background: white !important;
+    padding: 2.5rem !important;
+    color: #1E293B !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
+    line-height: 1.7 !important;
+    font-size: 12pt !important;
+    font-family: 'Times New Roman', serif !important;
+    border-radius: 4px !important;
+}
+
+.recipient-info {
+    margin-left: 45% !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.letter-footer {
+    margin-top: 2rem !important;
+    margin-left: auto !important;
+    width: 250px !important;
+    text-align: right !important;
+}
+
+/* ===== REPORT TEMPLATE ===== */
+.report-builder-content {
+    width: min(1200px, 98vw) !important;
+    max-height: 92vh !important;
+    overflow: auto !important;
+    padding: 1.5rem !important;
+    background: #F1F5F9 !important;
+}
+
+#reportContainer {
+    background: #e8ecf0 !important;
+    padding: 1.5rem !important;
+}
+
+.report-page {
+    width: 100% !important;
+    max-width: 210mm !important;
+    min-height: auto !important;
+    background: white !important;
+    margin: 0 auto 2rem !important;
+    padding: 2.5rem !important;
+    position: relative !important;
+    font-family: "Times New Roman", serif !important;
+    font-size: 11pt !important;
+    color: #000 !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+    border-radius: 4px !important;
+    page-break-after: always !important;
+}
+
+.report-page .page-title {
+    text-align: left !important;
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+    margin-bottom: 1.5rem !important;
+    margin-top: 0 !important;
+    border-bottom: 2px solid #000 !important;
+    padding-bottom: 0.3rem !important;
+    line-height: 1.2 !important;
+}
+
+.report-page .page-content {
+    min-height: 400px !important;
+    line-height: 1.7 !important;
+}
+
+/* ============================================================
+   TABLETTE (768px - 1024px)
+   ============================================================ */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* CV - garde la colonne mais plus compact */
+    .cv-template {
+        grid-template-columns: 200px 1fr !important;
+    }
+    
+    .cv-sidebar {
+        padding: 1.5rem 1.2rem !important;
+        gap: 1.2rem !important;
+    }
+    
+    .cv-main {
+        padding: 1.5rem !important;
+    }
+    
+    .cv-main .cv-name {
+        font-size: 1.8rem !important;
+    }
+    
+    .photo-placeholder,
+    #photoPreview {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    /* Lettre */
+    .letter-template {
+        padding: 2rem !important;
+        font-size: 11pt !important;
+    }
+    
+    /* Rapport */
+    .report-page {
+        padding: 2rem !important;
+    }
+    
+    .report-page .page-title {
+        font-size: 1.2rem !important;
+    }
+    
+    .cover-page .logo-upload {
+        width: 140px !important;
+        height: 140px !important;
+    }
+}
+
+/* ============================================================
+   MOBILE (<= 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+    /* ===== BUILDER MODAL ===== */
+    .builder-content {
+        width: 98vw !important;
+        max-height: 95vh !important;
+        padding: 0.8rem !important;
+        border-radius: 12px !important;
+    }
+    
+    /* ===== CV ===== */
+    .cv-template {
+        grid-template-columns: 1fr !important;
+        border-radius: 8px !important;
+        min-height: auto !important;
+    }
+    
+    .cv-sidebar {
+        order: 0 !important;
+        padding: 1.2rem !important;
+        gap: 1rem !important;
+        width: 100% !important;
+    }
+    
+    .cv-main {
+        order: 1 !important;
+        padding: 1.2rem !important;
+        width: 100% !important;
+    }
+    
+    .cv-main .cv-name {
+        font-size: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .cv-main h2 {
+        font-size: 0.9rem !important;
+    }
+    
+    .editable {
+        font-size: 0.9rem !important;
+        min-height: 1.4rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .cv-sidebar .editable {
+        font-size: 0.85rem !important;
+        color: #F8FAFC !important;
+    }
+    
+    .cv-sidebar h3 {
+        font-size: 0.8rem !important;
+    }
+    
+    .photo-placeholder,
+    #photoPreview {
+        width: 90px !important;
+        height: 90px !important;
+    }
+    
+    .photo-placeholder {
+        font-size: 0.7rem !important;
+    }
+    
+    .photo-placeholder small {
+        font-size: 0.55rem !important;
+    }
+    
+    .section-actions button {
+        padding: 0.1rem 0.4rem !important;
+        font-size: 0.65rem !important;
+    }
+    
+    .cv-toolbar {
+        padding: 0.5rem !important;
+        gap: 0.4rem !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        border-radius: 8px !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .cv-toolbar button {
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.8rem !important;
+        border-radius: 6px !important;
+    }
+    
+    #restoreContainer {
+        display: flex !important;
+        gap: 0.3rem !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+    
+    .restore-btn {
+        padding: 0.2rem 0.6rem !important;
+        font-size: 0.7rem !important;
+    }
+    
+    /* Empêcher le débordement */
+    .cv-template * {
+        max-width: 100% !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    .cv-section {
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+    
+    .cv-main .editable {
+        max-width: 100% !important;
+        word-break: break-word !important;
+    }
+    
+    .sidebar-section {
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+    
+    /* ===== LETTRE ===== */
+    .letter-template {
+        padding: 1.2rem !important;
+        font-size: 11pt !important;
+        border-radius: 8px !important;
+        min-height: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .recipient-info {
+        margin-left: 0 !important;
+        margin-top: 0.5rem !important;
+    }
+    
+    .letter-footer {
+        width: 100% !important;
+        text-align: right !important;
+        margin-top: 1.5rem !important;
+    }
+    
+    .letter-template .editable {
+        font-size: 0.95rem !important;
+        min-height: 1.2rem !important;
+    }
+    
+    .letter-section {
+        width: 100% !important;
+    }
+    
+    .letter-body {
+        gap: 0.8rem !important;
+    }
+    
+    .letter-para {
+        margin-bottom: 0.8rem !important;
+    }
+    
+    /* ===== RAPPORT ===== */
+    .report-builder-content {
+        padding: 0.5rem !important;
+        max-height: 95vh !important;
+        width: 98vw !important;
+        border-radius: 12px !important;
+    }
+    
+    #reportContainer {
+        padding: 0.5rem !important;
+        background: #e8ecf0 !important;
+    }
+    
+    .report-page {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+        padding: 1.2rem !important;
+        margin-bottom: 1rem !important;
+        border-radius: 8px !important;
+    }
+    
+    .report-page .page-title {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .report-page .page-content {
+        min-height: 150px !important;
+        font-size: 0.95rem !important;
+    }
+    
+    .report-main-title {
+        font-size: 1.3rem !important;
+    }
+    
+    .report-title-box {
+        width: 100% !important;
+        padding: 0.8rem !important;
+    }
+    
+    .cover-info-row {
+        flex-direction: column !important;
+        gap: 0.8rem !important;
+        align-items: center !important;
+    }
+    
+    .cover-left,
+    .cover-right {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .cover-page .logo-upload {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    .report-toolbar {
+        padding: 0.5rem !important;
+        gap: 0.4rem !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        border-radius: 8px !important;
+    }
+    
+    .report-toolbar button,
+    .report-toolbar select,
+    .image-btn {
+        padding: 0.3rem 0.7rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .page-controls {
+        opacity: 1 !important;
+        top: 4px !important;
+        right: 6px !important;
+    }
+    
+    .page-controls button {
+        padding: 2px 6px !important;
+        font-size: 0.65rem !important;
+    }
+    
+    .report-table {
+        font-size: 0.85rem !important;
+    }
+    
+    .report-table td,
+    .report-table th {
+        padding: 0.3rem 0.5rem !important;
+    }
+    
+    #sommaireContent div,
+    #tableMatiereContent div {
+        font-size: 10pt !important;
+    }
+    
+    .academic-year {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* ============================================================
+   TRÈS PETITS ÉCRANS (<= 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+    /* ===== BUILDER ===== */
+    .builder-content {
+        padding: 0.4rem !important;
+        max-height: 96vh !important;
+        width: 99vw !important;
+    }
+    
+    /* ===== CV ===== */
+    .cv-sidebar {
+        padding: 0.8rem !important;
+        gap: 0.8rem !important;
+    }
+    
+    .cv-main {
+        padding: 0.8rem !important;
+    }
+    
+    .cv-main .cv-name {
+        font-size: 1.2rem !important;
+    }
+    
+    .editable {
+        font-size: 0.85rem !important;
+        min-height: 1.2rem !important;
+    }
+    
+    .photo-placeholder,
+    #photoPreview {
+        width: 75px !important;
+        height: 75px !important;
+    }
+    
+    .cv-toolbar button {
+        padding: 0.3rem 0.6rem !important;
+        font-size: 0.7rem !important;
+    }
+    
+    /* ===== LETTRE ===== */
+    .letter-template {
+        padding: 0.8rem !important;
+        font-size: 10pt !important;
+    }
+    
+    .letter-template .editable {
+        font-size: 0.85rem !important;
+    }
+    
+    .subject-line {
+        font-size: 0.9rem !important;
+    }
+    
+    /* ===== RAPPORT ===== */
+    .report-page {
+        padding: 0.8rem !important;
+    }
+    
+    .report-page .page-title {
+        font-size: 0.95rem !important;
+    }
+    
+    .report-page .page-content {
+        font-size: 0.85rem !important;
+        min-height: 100px !important;
+    }
+    
+    .report-main-title {
+        font-size: 1.1rem !important;
+    }
+    
+    .report-toolbar button,
+    .report-toolbar select,
+    .image-btn {
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.65rem !important;
+    }
+    
+    .cover-page .logo-upload {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    .cover-left,
+    .cover-right {
+        font-size: 0.85rem !important;
+    }
+    
+    .academic-year {
+        font-size: 0.8rem !important;
+    }
+    
+    .report-table {
+        font-size: 0.75rem !important;
+    }
+    
+    .report-table td,
+    .report-table th {
+        padding: 0.2rem 0.4rem !important;
+    }
+    
+    #sommaireContent div,
+    #tableMatiereContent div {
+        font-size: 9pt !important;
+    }
+}
+
+/* ============================================================
+   GRANDS ÉCRANS (>= 1024px) - FORMAT A4
+   ============================================================ */
+@media (min-width: 1024px) {
+    /* ===== CV ===== */
+    .cv-template {
+        width: 210mm !important;
+        min-height: 297mm !important;
+        grid-template-columns: 240px 1fr !important;
+    }
+    
+    .cv-sidebar {
+        padding: 2rem 1.5rem !important;
+    }
+    
+    .cv-main {
+        padding: 2rem 2rem 2rem 1.8rem !important;
+    }
+    
+    .photo-placeholder,
+    #photoPreview {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    /* ===== LETTRE ===== */
+    .letter-template {
+        width: 210mm !important;
+        min-height: 297mm !important;
+        padding: 2.5rem !important;
+    }
+    
+    /* ===== RAPPORT ===== */
+    .report-page {
+        width: 210mm !important;
+        min-height: 297mm !important;
+        padding: 2.5rem !important;
+    }
+    
+    .cover-page .logo-upload {
+        width: 180px !important;
+        height: 180px !important;
+    }
+}
+
+/* ============================================================
+   CV TEMPLATE - OPTIMISATION MOBILE (TOUT VISIBLE)
    ============================================================ */
 
 /* ===== MOBILE (<= 768px) ===== */
@@ -2490,9 +3104,8 @@ footer {
         width: 100% !important;
         max-height: 100vh !important;
         height: 100vh !important;
-        padding: 0.5rem !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
+        padding: 0.4rem !important;
+        overflow: hidden !important;
         background: #F1F5F9 !important;
         display: flex !important;
         flex-direction: column !important;
@@ -2505,18 +3118,19 @@ footer {
         top: 0 !important;
         right: 0 !important;
         float: right !important;
-        font-size: 1.8rem !important;
+        font-size: 1.5rem !important;
         cursor: pointer !important;
         color: #64748B !important;
-        padding: 0.2rem 0.8rem !important;
+        padding: 0.1rem 0.6rem !important;
         background: white !important;
         z-index: 60 !important;
-        border-radius: 0 0 0 12px !important;
+        border-radius: 0 0 0 10px !important;
         margin: 0 !important;
         display: inline-block !important;
         width: auto !important;
         line-height: 1 !important;
         box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+        flex-shrink: 0 !important;
     }
     
     /* ===== ZONE DU CV ===== */
@@ -2528,27 +3142,28 @@ footer {
         flex: 1 !important;
         display: flex !important;
         flex-direction: column !important;
+        min-height: 0 !important;
     }
     
     /* ===== TOOLBAR ===== */
     .cv-toolbar {
         display: flex !important;
         flex-wrap: wrap !important;
-        gap: 0.4rem !important;
+        gap: 0.3rem !important;
         justify-content: center !important;
         align-items: center !important;
-        padding: 0.5rem !important;
-        margin: 0 0 0.5rem 0 !important;
+        padding: 0.3rem !important;
+        margin: 0 0 0.3rem 0 !important;
         background: white !important;
-        border-radius: 8px !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+        border-radius: 6px !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.06) !important;
         flex-shrink: 0 !important;
     }
     
     .cv-toolbar button {
-        padding: 0.4rem 0.8rem !important;
-        font-size: 0.8rem !important;
-        border-radius: 6px !important;
+        padding: 0.25rem 0.6rem !important;
+        font-size: 0.7rem !important;
+        border-radius: 4px !important;
         border: none !important;
         background: var(--primary) !important;
         color: white !important;
@@ -2563,90 +3178,114 @@ footer {
     
     #restoreContainer {
         display: flex !important;
-        gap: 0.3rem !important;
+        gap: 0.2rem !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
     }
     
     .restore-btn {
-        padding: 0.2rem 0.6rem !important;
-        font-size: 0.7rem !important;
+        padding: 0.15rem 0.4rem !important;
+        font-size: 0.6rem !important;
         background: #E2E8F0 !important;
         border: none !important;
-        border-radius: 4px !important;
+        border-radius: 3px !important;
         cursor: pointer !important;
         color: #1E293B !important;
     }
     
-    /* ===== CV TEMPLATE ===== */
+    /* ===== CV TEMPLATE - CONTENU COMPACT ===== */
     .cv-template {
         display: flex !important;
         flex-direction: column !important;
         width: 100% !important;
-        min-height: auto !important;
+        height: 100% !important;
+        min-height: 0 !important;
         background: white !important;
-        border-radius: 8px !important;
+        border-radius: 6px !important;
         overflow: hidden !important;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08) !important;
         flex: 1 !important;
     }
     
-    /* ===== SIDEBAR ===== */
+    /* ===== SIDEBAR - COMPACTE ===== */
     .cv-sidebar {
         order: 0 !important;
         width: 100% !important;
-        padding: 0.8rem !important;
+        padding: 0.4rem 0.6rem !important;
         background: #2E384D !important;
         color: #F8FAFC !important;
         display: flex !important;
-        flex-direction: column !important;
-        gap: 0.6rem !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 0.2rem 0.6rem !important;
         border-radius: 0 !important;
         flex-shrink: 0 !important;
-    }
-    
-    .cv-sidebar h3 {
-        font-size: 0.75rem !important;
-        letter-spacing: 1px !important;
-        text-transform: uppercase !important;
-        border-bottom: 2px solid var(--primary) !important;
-        padding-bottom: 0.2rem !important;
-        margin-bottom: 0.2rem !important;
-        color: #F8FAFC !important;
-    }
-    
-    .cv-sidebar .editable {
-        color: #F8FAFC !important;
-        font-size: 0.8rem !important;
-        min-height: 1rem !important;
-        padding: 0.1rem 0 !important;
-        line-height: 1.4 !important;
-    }
-    
-    .cv-sidebar .editable:empty::before {
-        color: #94A3B8 !important;
-        font-style: italic !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
     }
     
     .sidebar-section {
-        width: 100% !important;
-        overflow: hidden !important;
-        margin-bottom: 0 !important;
-    }
-    
-    /* ===== PHOTO ===== */
-    .photo-container {
         display: flex !important;
-        flex-direction: column !important;
+        flex-direction: row !important;
         align-items: center !important;
         gap: 0.2rem !important;
-        margin-bottom: 0.2rem !important;
+        flex: 0 1 auto !important;
+        width: auto !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+    }
+    
+    .sidebar-section h3 {
+        font-size: 0.55rem !important;
+        letter-spacing: 0.5px !important;
+        text-transform: uppercase !important;
+        border-bottom: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        color: #F8FAFC !important;
+        opacity: 0.7 !important;
+        font-weight: 600 !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .sidebar-section .editable {
+        color: #F8FAFC !important;
+        font-size: 0.65rem !important;
+        min-height: 0.8rem !important;
+        padding: 0.05rem 0 !important;
+        line-height: 1.2 !important;
+        max-width: 120px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+    
+    .sidebar-section .editable:empty::before {
+        color: #94A3B8 !important;
+        font-style: italic !important;
+        font-size: 0.55rem !important;
+    }
+    
+    /* Masquer les sections vides ou non essentielles sur mobile */
+    .sidebar-section:empty,
+    .sidebar-section .editable:empty {
+        display: none !important;
+    }
+    
+    /* ===== PHOTO - TRÈS PETITE ===== */
+    .photo-container {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 0.3rem !important;
+        margin: 0 !important;
         cursor: pointer !important;
+        flex-shrink: 0 !important;
     }
     
     .photo-placeholder {
-        width: 70px !important;
-        height: 70px !important;
+        width: 40px !important;
+        height: 40px !important;
         border: 2px solid white !important;
         border-radius: 50% !important;
         display: flex !important;
@@ -2654,76 +3293,80 @@ footer {
         justify-content: center !important;
         align-items: center !important;
         text-align: center !important;
-        padding: 0.4rem !important;
-        font-size: 0.6rem !important;
+        padding: 0.2rem !important;
+        font-size: 0.4rem !important;
         background: rgba(255,255,255,0.05) !important;
         color: #F8FAFC !important;
+        flex-shrink: 0 !important;
     }
     
     .photo-placeholder small {
-        font-size: 0.45rem !important;
-        margin-top: 0.1rem !important;
-        opacity: 0.75 !important;
+        display: none !important;
     }
     
     #photoPreview {
-        width: 70px !important;
-        height: 70px !important;
+        width: 40px !important;
+        height: 40px !important;
         object-fit: cover !important;
         border-radius: 50% !important;
         display: none !important;
-        border: 3px solid white !important;
+        border: 2px solid white !important;
+        flex-shrink: 0 !important;
     }
     
-    /* ===== MAIN CONTENT ===== */
+    /* ===== MAIN CONTENT - COMPACT ===== */
     .cv-main {
         order: 1 !important;
         width: 100% !important;
-        padding: 0.8rem !important;
+        padding: 0.4rem 0.6rem !important;
         background: white !important;
         color: #1E293B !important;
         flex: 1 !important;
         overflow-y: auto !important;
+        min-height: 0 !important;
     }
     
     .cv-main .cv-name {
-        font-size: 1.3rem !important;
+        font-size: 1rem !important;
         font-weight: 700 !important;
-        border-bottom: 3px solid #2E384D !important;
-        padding-bottom: 0.3rem !important;
-        margin-bottom: 0.8rem !important;
+        border-bottom: 2px solid #2E384D !important;
+        padding-bottom: 0.15rem !important;
+        margin-bottom: 0.3rem !important;
         color: #1E293B !important;
         text-align: left !important;
     }
     
     .cv-main h2 {
-        font-size: 0.8rem !important;
-        margin-bottom: 0.2rem !important;
+        font-size: 0.6rem !important;
+        margin-bottom: 0.1rem !important;
         color: #2E384D !important;
         letter-spacing: 0.5px !important;
         text-transform: uppercase !important;
-        border-bottom: 2px solid #2E384D !important;
-        padding-bottom: 0.15rem !important;
+        border-bottom: 1px solid #2E384D !important;
+        padding-bottom: 0.1rem !important;
     }
     
     .cv-main .editable {
-        font-size: 0.8rem !important;
-        min-height: 1rem !important;
-        padding: 0.1rem 0 !important;
+        font-size: 0.65rem !important;
+        min-height: 0.7rem !important;
+        padding: 0.05rem 0 !important;
         color: #1E293B !important;
-        line-height: 1.4 !important;
+        line-height: 1.2 !important;
         white-space: pre-wrap !important;
         word-break: break-word !important;
+        max-height: none !important;
+        overflow: visible !important;
     }
     
     .cv-main .editable:empty::before {
         color: #94A3B8 !important;
         font-style: italic !important;
+        font-size: 0.55rem !important;
     }
     
-    /* ===== SECTIONS ===== */
+    /* ===== SECTIONS - COMPACTES ===== */
     .cv-section {
-        margin-bottom: 0.6rem !important;
+        margin-bottom: 0.3rem !important;
         width: 100% !important;
         overflow: hidden !important;
     }
@@ -2732,25 +3375,25 @@ footer {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
-        gap: 0.3rem !important;
-        margin-bottom: 0.1rem !important;
+        gap: 0.2rem !important;
+        margin-bottom: 0 !important;
     }
     
     .section-actions {
         display: flex !important;
-        gap: 0.15rem !important;
+        gap: 0.1rem !important;
         flex-shrink: 0 !important;
     }
     
     .section-actions button {
-        padding: 0.05rem 0.35rem !important;
-        font-size: 0.55rem !important;
+        padding: 0.05rem 0.25rem !important;
+        font-size: 0.45rem !important;
         border: 1px solid #CBD5E1 !important;
-        border-radius: 3px !important;
+        border-radius: 2px !important;
         background: #F1F5F9 !important;
         cursor: pointer !important;
         color: #1E293B !important;
-        line-height: 1.2 !important;
+        line-height: 1 !important;
     }
     
     .section-actions button:hover {
@@ -2771,6 +3414,16 @@ footer {
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
     }
+    
+    /* ===== CACHER LES ÉLÉMENTS NON ESSENTIELS SUR MOBILE ===== */
+    .cv-section.dynamic .section-header h2 {
+        font-size: 0.55rem !important;
+    }
+    
+    /* Réduire la hauteur des placeholders vides */
+    .cv-main .editable:empty {
+        min-height: 0.6rem !important;
+    }
 }
 
 /* ============================================================
@@ -2779,78 +3432,84 @@ footer {
 @media (max-width: 480px) {
     
     #builderModal .builder-content {
-        padding: 0.3rem !important;
+        padding: 0.25rem !important;
+    }
+    
+    #builderModal .close-modal {
+        font-size: 1.2rem !important;
+        padding: 0.05rem 0.4rem !important;
     }
     
     .cv-toolbar {
-        padding: 0.3rem !important;
-        gap: 0.3rem !important;
+        padding: 0.2rem !important;
+        gap: 0.2rem !important;
     }
     
     .cv-toolbar button {
-        padding: 0.3rem 0.5rem !important;
-        font-size: 0.7rem !important;
+        padding: 0.2rem 0.4rem !important;
+        font-size: 0.6rem !important;
+    }
+    
+    .restore-btn {
+        font-size: 0.5rem !important;
+        padding: 0.1rem 0.3rem !important;
     }
     
     .cv-sidebar {
-        padding: 0.5rem !important;
-        gap: 0.4rem !important;
+        padding: 0.3rem 0.4rem !important;
+        gap: 0.15rem 0.4rem !important;
     }
     
-    .cv-sidebar .editable {
-        font-size: 0.75rem !important;
-        min-height: 0.8rem !important;
+    .sidebar-section h3 {
+        font-size: 0.45rem !important;
     }
     
-    .cv-sidebar h3 {
-        font-size: 0.65rem !important;
+    .sidebar-section .editable {
+        font-size: 0.55rem !important;
+        max-width: 80px !important;
     }
     
     .photo-placeholder,
     #photoPreview {
-        width: 55px !important;
-        height: 55px !important;
+        width: 32px !important;
+        height: 32px !important;
     }
     
     .photo-placeholder {
-        font-size: 0.5rem !important;
-        padding: 0.3rem !important;
-    }
-    
-    .photo-placeholder small {
-        font-size: 0.4rem !important;
+        font-size: 0.35rem !important;
+        padding: 0.15rem !important;
     }
     
     .cv-main {
-        padding: 0.5rem !important;
+        padding: 0.3rem 0.4rem !important;
     }
     
     .cv-main .cv-name {
-        font-size: 1.1rem !important;
-        margin-bottom: 0.5rem !important;
-    }
-    
-    .cv-main .editable {
-        font-size: 0.75rem !important;
-        min-height: 0.8rem !important;
+        font-size: 0.85rem !important;
+        margin-bottom: 0.2rem !important;
+        padding-bottom: 0.1rem !important;
     }
     
     .cv-main h2 {
-        font-size: 0.7rem !important;
+        font-size: 0.5rem !important;
+    }
+    
+    .cv-main .editable {
+        font-size: 0.55rem !important;
+        min-height: 0.5rem !important;
     }
     
     .cv-section {
-        margin-bottom: 0.4rem !important;
+        margin-bottom: 0.2rem !important;
     }
     
     .section-actions button {
-        font-size: 0.5rem !important;
-        padding: 0.05rem 0.25rem !important;
+        font-size: 0.4rem !important;
+        padding: 0.03rem 0.2rem !important;
     }
     
-    #builderModal .close-modal {
-        font-size: 1.5rem !important;
-        padding: 0.1rem 0.5rem !important;
+    .cv-section.dynamic .section-header h2 {
+        font-size: 0.5rem !important;
     }
 }
 
@@ -2874,6 +3533,52 @@ footer {
         padding: 2rem 1.5rem !important;
         background: #2E384D !important;
         color: #F8FAFC !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+    
+    .sidebar-section {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.3rem !important;
+        width: 100% !important;
+    }
+    
+    .sidebar-section h3 {
+        font-size: 0.9rem !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        border-bottom: 2px solid var(--primary) !important;
+        padding-bottom: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+        opacity: 1 !important;
+    }
+    
+    .sidebar-section .editable {
+        font-size: 0.9rem !important;
+        min-height: 1.6rem !important;
+        white-space: normal !important;
+        max-width: none !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+    }
+    
+    .photo-container {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .photo-placeholder,
+    #photoPreview {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    .photo-placeholder small {
+        display: block !important;
     }
     
     .cv-main {
@@ -2887,10 +3592,17 @@ footer {
         font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
     }
     
-    .photo-placeholder,
-    #photoPreview {
-        width: 120px !important;
-        height: 120px !important;
+    .cv-main h2 {
+        font-size: 1rem !important;
+    }
+    
+    .cv-main .editable {
+        font-size: 0.95rem !important;
+        min-height: 1.6rem !important;
+    }
+    
+    .cv-section {
+        margin-bottom: 1.2rem !important;
     }
     
     /* Réinitialiser le modal pour desktop */
