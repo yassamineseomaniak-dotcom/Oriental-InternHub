@@ -2791,16 +2791,53 @@ const companiesDatabase = [
 ];
 
 // =========================================================================
-// REGISTER DES DONNÉES - Entreprises de l'Oriental
-// C'est ICI que vous mettez tout le grand tableau des blocs 1, 2, 3...
+// ZOOM IN - ZOOM OUT//
 // =========================================================================
 
 
-   
+   function setupZoom(zoomInId, zoomOutId, zoomResetId, levelId, targetSelector) {
+    let scale = 1;
+    const MIN = 0.3, MAX = 2, STEP = 0.15;
+
+    const zoomIn    = document.getElementById(zoomInId);
+    const zoomOut   = document.getElementById(zoomOutId);
+    const zoomReset = document.getElementById(zoomResetId);
+    const levelEl   = document.getElementById(levelId);
+    const target    = document.querySelector(targetSelector);
+
+    if (!zoomIn || !zoomOut || !target) return;
+
+    function applyZoom() {
+        target.style.transform = `scale(${scale})`;
+        target.style.marginBottom = scale < 1
+            ? `${-(target.offsetHeight * (1 - scale))}px`
+            : '0';
+        if (levelEl) levelEl.textContent = Math.round(scale * 100) + '%';
+    }
+
+    zoomIn.addEventListener('click', () => {
+        scale = Math.min(MAX, parseFloat((scale + STEP).toFixed(2)));
+        applyZoom();
+    });
+
+    zoomOut.addEventListener('click', () => {
+        scale = Math.max(MIN, parseFloat((scale - STEP).toFixed(2)));
+        applyZoom();
+    });
+
+    if (zoomReset) {
+        zoomReset.addEventListener('click', () => {
+            scale = 1;
+            applyZoom();
+        });
+    }
+}
 
 // =========================================================================
 // ÉVÉNEMENTS DOM (Une fois la page chargée)
 // =========================================================================
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialisation des grilles
     globalRecommendedFilteredList = [...companiesDatabase];
@@ -4111,6 +4148,10 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
         }, { passive: false });
     }
+setupZoom('cvZoomIn',     'cvZoomOut',     'cvZoomReset',     'cvZoomLevel',     '#cvTemplate');
+setupZoom('letterZoomIn', 'letterZoomOut', 'letterZoomReset', 'letterZoomLevel', '#letterTemplate');
+setupZoom('reportZoomIn', 'reportZoomOut', 'reportZoomReset', 'reportZoomLevel', '#reportContainer');
+
 });
 
 // ============================================================
