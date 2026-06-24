@@ -3184,18 +3184,75 @@ if (downloadBtn) {
     });
 }
 
-    // Photo Upload Preview
+    // ============================================================
+    // PHOTO UPLOAD PREVIEW - VERSION AMÉLIORÉE
+    // ============================================================
     if (upload && preview) {
-        upload.addEventListener("change", (e) => {
+        upload.addEventListener("change", function(e) {
             const file = e.target.files[0];
-            if (!file) return;
-
-            preview.src = URL.createObjectURL(file);
-            preview.style.display = "block";
             
-            const placeholder = document.querySelector(".photo-placeholder");
-            if (placeholder) placeholder.style.display = "none";
+            if (!file) {
+                console.log('Aucun fichier sélectionné');
+                return;
+            }
+            
+            // Vérifier que c'est bien une image
+            if (!file.type.startsWith('image/')) {
+                alert('Veuillez sélectionner une image (JPG, PNG, etc.)');
+                this.value = '';
+                return;
+            }
+            
+            // Créer un FileReader pour lire l'image
+            const reader = new FileReader();
+            
+            reader.onload = function(event) {
+                // Mettre à jour la prévisualisation
+                preview.src = event.target.result;
+                preview.style.display = 'block';
+                preview.style.width = '70px';
+                preview.style.height = '70px';
+                preview.style.objectFit = 'cover';
+                preview.style.borderRadius = '50%';
+                preview.style.border = '3px solid white';
+                
+                // Cacher le placeholder
+                const placeholder = document.querySelector(".photo-placeholder");
+                if (placeholder) {
+                    placeholder.style.display = 'none';
+                }
+                
+                console.log('Photo insérée avec succès !');
+            };
+            
+            reader.onerror = function() {
+                alert('Erreur lors de la lecture du fichier');
+            };
+            
+            // Lire le fichier comme URL de données
+            reader.readAsDataURL(file);
         });
+        
+        // PERMETTRE DE SUPPRIMER LA PHOTO EN DOUBLE-CLIQUANT
+        const photoContainer = document.querySelector('.photo-container');
+        if (photoContainer) {
+            photoContainer.addEventListener('dblclick', function(e) {
+                e.preventDefault();
+                
+                if (confirm('Supprimer la photo ?')) {
+                    preview.src = '';
+                    preview.style.display = 'none';
+                    
+                    const placeholder = document.querySelector('.photo-placeholder');
+                    if (placeholder) {
+                        placeholder.style.display = 'flex';
+                    }
+                    
+                    upload.value = '';
+                    console.log('Photo supprimée');
+                }
+            });
+        }
     }
 
     // =========================================================================
