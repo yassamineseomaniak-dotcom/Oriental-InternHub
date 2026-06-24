@@ -3073,17 +3073,16 @@ footer {
 }
 
 /* ============================================================
-   CV TEMPLATE - OPTIMISATION MOBILE (TOUT VISIBLE)
+   CV TEMPLATE - VERSION MOBILE OPTIMISÉE
    ============================================================ */
 
-/* ===== MOBILE (<= 768px) ===== */
 @media (max-width: 768px) {
     
-    /* ===== MODAL CV ===== */
+    /* ===== MODAL CV - PLEIN ÉCRAN ===== */
     #builderModal {
         padding: 0 !important;
         align-items: flex-start !important;
-        background: rgba(0,0,0,0.8) !important;
+        background: rgba(0,0,0,0.85) !important;
     }
     
     #builderModal .modal-content {
@@ -3104,7 +3103,7 @@ footer {
         width: 100% !important;
         max-height: 100vh !important;
         height: 100vh !important;
-        padding: 0.4rem !important;
+        padding: 0.3rem !important;
         overflow: hidden !important;
         background: #F1F5F9 !important;
         display: flex !important;
@@ -3118,18 +3117,17 @@ footer {
         top: 0 !important;
         right: 0 !important;
         float: right !important;
-        font-size: 1.5rem !important;
+        font-size: 1.3rem !important;
         cursor: pointer !important;
         color: #64748B !important;
-        padding: 0.1rem 0.6rem !important;
+        padding: 0.05rem 0.5rem !important;
         background: white !important;
         z-index: 60 !important;
-        border-radius: 0 0 0 10px !important;
+        border-radius: 0 0 0 8px !important;
         margin: 0 !important;
         display: inline-block !important;
         width: auto !important;
-        line-height: 1 !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+        line-height: 1.2 !important;
         flex-shrink: 0 !important;
     }
     
@@ -3149,20 +3147,19 @@ footer {
     .cv-toolbar {
         display: flex !important;
         flex-wrap: wrap !important;
-        gap: 0.3rem !important;
+        gap: 0.2rem !important;
         justify-content: center !important;
         align-items: center !important;
-        padding: 0.3rem !important;
-        margin: 0 0 0.3rem 0 !important;
+        padding: 0.2rem 0.3rem !important;
+        margin: 0 0 0.2rem 0 !important;
         background: white !important;
-        border-radius: 6px !important;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.06) !important;
+        border-radius: 4px !important;
         flex-shrink: 0 !important;
     }
     
     .cv-toolbar button {
-        padding: 0.25rem 0.6rem !important;
-        font-size: 0.7rem !important;
+        padding: 0.2rem 0.5rem !important;
+        font-size: 0.65rem !important;
         border-radius: 4px !important;
         border: none !important;
         background: var(--primary) !important;
@@ -3172,20 +3169,16 @@ footer {
         white-space: nowrap !important;
     }
     
-    .cv-toolbar button:hover {
-        background: #1D4ED8 !important;
-    }
-    
     #restoreContainer {
         display: flex !important;
-        gap: 0.2rem !important;
+        gap: 0.15rem !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
     }
     
     .restore-btn {
-        padding: 0.15rem 0.4rem !important;
-        font-size: 0.6rem !important;
+        padding: 0.1rem 0.3rem !important;
+        font-size: 0.55rem !important;
         background: #E2E8F0 !important;
         border: none !important;
         border-radius: 3px !important;
@@ -3193,7 +3186,7 @@ footer {
         color: #1E293B !important;
     }
     
-    /* ===== CV TEMPLATE - CONTENU COMPACT ===== */
+    /* ===== CV TEMPLATE - SCROLLABLE ===== */
     .cv-template {
         display: flex !important;
         flex-direction: column !important;
@@ -3201,23 +3194,22 @@ footer {
         height: 100% !important;
         min-height: 0 !important;
         background: white !important;
-        border-radius: 6px !important;
+        border-radius: 4px !important;
         overflow: hidden !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.08) !important;
         flex: 1 !important;
     }
     
-    /* ===== SIDEBAR - COMPACTE ===== */
+    /* ===== SIDEBAR - COMPACTE EN LIGNE ===== */
     .cv-sidebar {
         order: 0 !important;
         width: 100% !important;
-        padding: 0.4rem 0.6rem !important;
+        padding: 0.3rem 0.5rem !important;
         background: #2E384D !important;
         color: #F8FAFC !important;
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
-        gap: 0.2rem 0.6rem !important;
+        gap: 0.15rem 0.4rem !important;
         border-radius: 0 !important;
         flex-shrink: 0 !important;
         align-items: center !important;
@@ -3228,7 +3220,7 @@ footer {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        gap: 0.2rem !important;
+        gap: 0.15rem !important;
         flex: 0 1 auto !important;
         width: auto !important;
         overflow: hidden !important;
@@ -3236,25 +3228,25 @@ footer {
     }
     
     .sidebar-section h3 {
-        font-size: 0.55rem !important;
-        letter-spacing: 0.5px !important;
+        font-size: 0.5rem !important;
+        letter-spacing: 0.3px !important;
         text-transform: uppercase !important;
         border-bottom: none !important;
         padding: 0 !important;
         margin: 0 !important;
         color: #F8FAFC !important;
-        opacity: 0.7 !important;
+        opacity: 0.6 !important;
         font-weight: 600 !important;
         flex-shrink: 0 !important;
     }
     
     .sidebar-section .editable {
         color: #F8FAFC !important;
-        font-size: 0.65rem !important;
-        min-height: 0.8rem !important;
+        font-size: 0.55rem !important;
+        min-height: 0.6rem !important;
         padding: 0.05rem 0 !important;
-        line-height: 1.2 !important;
-        max-width: 120px !important;
+        line-height: 1.1 !important;
+        max-width: 100px !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
         white-space: nowrap !important;
@@ -3263,29 +3255,23 @@ footer {
     .sidebar-section .editable:empty::before {
         color: #94A3B8 !important;
         font-style: italic !important;
-        font-size: 0.55rem !important;
+        font-size: 0.5rem !important;
     }
     
-    /* Masquer les sections vides ou non essentielles sur mobile */
-    .sidebar-section:empty,
-    .sidebar-section .editable:empty {
-        display: none !important;
-    }
-    
-    /* ===== PHOTO - TRÈS PETITE ===== */
+    /* ===== PHOTO - MINIATURE ===== */
     .photo-container {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        gap: 0.3rem !important;
+        gap: 0.2rem !important;
         margin: 0 !important;
         cursor: pointer !important;
         flex-shrink: 0 !important;
     }
     
     .photo-placeholder {
-        width: 40px !important;
-        height: 40px !important;
+        width: 32px !important;
+        height: 32px !important;
         border: 2px solid white !important;
         border-radius: 50% !important;
         display: flex !important;
@@ -3293,8 +3279,8 @@ footer {
         justify-content: center !important;
         align-items: center !important;
         text-align: center !important;
-        padding: 0.2rem !important;
-        font-size: 0.4rem !important;
+        padding: 0.1rem !important;
+        font-size: 0.3rem !important;
         background: rgba(255,255,255,0.05) !important;
         color: #F8FAFC !important;
         flex-shrink: 0 !important;
@@ -3305,8 +3291,8 @@ footer {
     }
     
     #photoPreview {
-        width: 40px !important;
-        height: 40px !important;
+        width: 32px !important;
+        height: 32px !important;
         object-fit: cover !important;
         border-radius: 50% !important;
         display: none !important;
@@ -3314,7 +3300,7 @@ footer {
         flex-shrink: 0 !important;
     }
     
-    /* ===== MAIN CONTENT - COMPACT ===== */
+    /* ===== MAIN CONTENT - SCROLLABLE ===== */
     .cv-main {
         order: 1 !important;
         width: 100% !important;
@@ -3324,49 +3310,48 @@ footer {
         flex: 1 !important;
         overflow-y: auto !important;
         min-height: 0 !important;
+        -webkit-overflow-scrolling: touch !important;
     }
     
     .cv-main .cv-name {
-        font-size: 1rem !important;
+        font-size: 0.9rem !important;
         font-weight: 700 !important;
         border-bottom: 2px solid #2E384D !important;
-        padding-bottom: 0.15rem !important;
-        margin-bottom: 0.3rem !important;
+        padding-bottom: 0.1rem !important;
+        margin-bottom: 0.2rem !important;
         color: #1E293B !important;
         text-align: left !important;
     }
     
     .cv-main h2 {
-        font-size: 0.6rem !important;
-        margin-bottom: 0.1rem !important;
+        font-size: 0.55rem !important;
+        margin-bottom: 0.05rem !important;
         color: #2E384D !important;
-        letter-spacing: 0.5px !important;
+        letter-spacing: 0.3px !important;
         text-transform: uppercase !important;
         border-bottom: 1px solid #2E384D !important;
-        padding-bottom: 0.1rem !important;
+        padding-bottom: 0.05rem !important;
     }
     
     .cv-main .editable {
-        font-size: 0.65rem !important;
-        min-height: 0.7rem !important;
+        font-size: 0.6rem !important;
+        min-height: 0.6rem !important;
         padding: 0.05rem 0 !important;
         color: #1E293B !important;
         line-height: 1.2 !important;
         white-space: pre-wrap !important;
         word-break: break-word !important;
-        max-height: none !important;
-        overflow: visible !important;
     }
     
     .cv-main .editable:empty::before {
         color: #94A3B8 !important;
         font-style: italic !important;
-        font-size: 0.55rem !important;
+        font-size: 0.5rem !important;
     }
     
     /* ===== SECTIONS - COMPACTES ===== */
     .cv-section {
-        margin-bottom: 0.3rem !important;
+        margin-bottom: 0.2rem !important;
         width: 100% !important;
         overflow: hidden !important;
     }
@@ -3386,22 +3371,14 @@ footer {
     }
     
     .section-actions button {
-        padding: 0.05rem 0.25rem !important;
-        font-size: 0.45rem !important;
+        padding: 0.03rem 0.2rem !important;
+        font-size: 0.4rem !important;
         border: 1px solid #CBD5E1 !important;
         border-radius: 2px !important;
         background: #F1F5F9 !important;
         cursor: pointer !important;
         color: #1E293B !important;
         line-height: 1 !important;
-    }
-    
-    .section-actions button:hover {
-        background: #E2E8F0 !important;
-    }
-    
-    .section-actions .remove-section {
-        color: #DC2626 !important;
     }
     
     .cv-section.fixed .section-actions {
@@ -3415,14 +3392,9 @@ footer {
         overflow-wrap: break-word !important;
     }
     
-    /* ===== CACHER LES ÉLÉMENTS NON ESSENTIELS SUR MOBILE ===== */
-    .cv-section.dynamic .section-header h2 {
-        font-size: 0.55rem !important;
-    }
-    
-    /* Réduire la hauteur des placeholders vides */
-    .cv-main .editable:empty {
-        min-height: 0.6rem !important;
+    /* ===== CACHER LES SECTIONS VIDES ===== */
+    .cv-section:has(.editable:empty) .section-header h2 {
+        opacity: 0.3 !important;
     }
 }
 
@@ -3432,206 +3404,69 @@ footer {
 @media (max-width: 480px) {
     
     #builderModal .builder-content {
-        padding: 0.25rem !important;
+        padding: 0.2rem !important;
     }
     
     #builderModal .close-modal {
-        font-size: 1.2rem !important;
-        padding: 0.05rem 0.4rem !important;
+        font-size: 1.1rem !important;
+        padding: 0.05rem 0.3rem !important;
     }
     
     .cv-toolbar {
-        padding: 0.2rem !important;
-        gap: 0.2rem !important;
+        padding: 0.15rem !important;
+        gap: 0.15rem !important;
     }
     
     .cv-toolbar button {
-        padding: 0.2rem 0.4rem !important;
-        font-size: 0.6rem !important;
-    }
-    
-    .restore-btn {
-        font-size: 0.5rem !important;
-        padding: 0.1rem 0.3rem !important;
+        padding: 0.15rem 0.35rem !important;
+        font-size: 0.55rem !important;
     }
     
     .cv-sidebar {
-        padding: 0.3rem 0.4rem !important;
-        gap: 0.15rem 0.4rem !important;
+        padding: 0.2rem 0.3rem !important;
+        gap: 0.1rem 0.3rem !important;
     }
     
     .sidebar-section h3 {
+        font-size: 0.4rem !important;
+    }
+    
+    .sidebar-section .editable {
+        font-size: 0.45rem !important;
+        max-width: 70px !important;
+    }
+    
+    .photo-placeholder,
+    #photoPreview {
+        width: 26px !important;
+        height: 26px !important;
+    }
+    
+    .cv-main {
+        padding: 0.25rem 0.4rem !important;
+    }
+    
+    .cv-main .cv-name {
+        font-size: 0.75rem !important;
+        margin-bottom: 0.15rem !important;
+        padding-bottom: 0.05rem !important;
+    }
+    
+    .cv-main h2 {
         font-size: 0.45rem !important;
     }
     
-    .sidebar-section .editable {
-        font-size: 0.55rem !important;
-        max-width: 80px !important;
-    }
-    
-    .photo-placeholder,
-    #photoPreview {
-        width: 32px !important;
-        height: 32px !important;
-    }
-    
-    .photo-placeholder {
-        font-size: 0.35rem !important;
-        padding: 0.15rem !important;
-    }
-    
-    .cv-main {
-        padding: 0.3rem 0.4rem !important;
-    }
-    
-    .cv-main .cv-name {
-        font-size: 0.85rem !important;
-        margin-bottom: 0.2rem !important;
-        padding-bottom: 0.1rem !important;
-    }
-    
-    .cv-main h2 {
-        font-size: 0.5rem !important;
-    }
-    
     .cv-main .editable {
-        font-size: 0.55rem !important;
-        min-height: 0.5rem !important;
+        font-size: 0.5rem !important;
+        min-height: 0.4rem !important;
     }
     
     .cv-section {
-        margin-bottom: 0.2rem !important;
+        margin-bottom: 0.15rem !important;
     }
     
     .section-actions button {
-        font-size: 0.4rem !important;
-        padding: 0.03rem 0.2rem !important;
-    }
-    
-    .cv-section.dynamic .section-header h2 {
-        font-size: 0.5rem !important;
-    }
-}
-
-/* ============================================================
-   DESKTOP - LE CV RESTE EN FORMAT A4
-   ============================================================ */
-@media (min-width: 769px) {
-    .cv-template {
-        display: grid !important;
-        grid-template-columns: 240px 1fr !important;
-        width: 210mm !important;
-        min-height: 297mm !important;
-        margin: 0 auto !important;
-        background: white !important;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
-        border-radius: 4px !important;
-    }
-    
-    .cv-sidebar {
-        order: 0 !important;
-        padding: 2rem 1.5rem !important;
-        background: #2E384D !important;
-        color: #F8FAFC !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 1.5rem !important;
-    }
-    
-    .sidebar-section {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 0.3rem !important;
-        width: 100% !important;
-    }
-    
-    .sidebar-section h3 {
-        font-size: 0.9rem !important;
-        letter-spacing: 1px !important;
-        text-transform: uppercase !important;
-        border-bottom: 2px solid var(--primary) !important;
-        padding-bottom: 0.5rem !important;
-        margin-bottom: 0.5rem !important;
-        opacity: 1 !important;
-    }
-    
-    .sidebar-section .editable {
-        font-size: 0.9rem !important;
-        min-height: 1.6rem !important;
-        white-space: normal !important;
-        max-width: none !important;
-        overflow: visible !important;
-        text-overflow: clip !important;
-    }
-    
-    .photo-container {
-        flex-direction: column !important;
-        gap: 0.5rem !important;
-        margin-bottom: 0.5rem !important;
-    }
-    
-    .photo-placeholder,
-    #photoPreview {
-        width: 120px !important;
-        height: 120px !important;
-    }
-    
-    .photo-placeholder small {
-        display: block !important;
-    }
-    
-    .cv-main {
-        order: 1 !important;
-        padding: 2rem 2rem 2rem 1.8rem !important;
-        background: white !important;
-        color: #1E293B !important;
-    }
-    
-    .cv-main .cv-name {
-        font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
-    }
-    
-    .cv-main h2 {
-        font-size: 1rem !important;
-    }
-    
-    .cv-main .editable {
-        font-size: 0.95rem !important;
-        min-height: 1.6rem !important;
-    }
-    
-    .cv-section {
-        margin-bottom: 1.2rem !important;
-    }
-    
-    /* Réinitialiser le modal pour desktop */
-    #builderModal .modal-content {
-        max-height: 92vh !important;
-        height: auto !important;
-        padding: 1.5rem !important;
-        border-radius: 16px !important;
-    }
-    
-    #builderModal .builder-content {
-        max-height: 92vh !important;
-        height: auto !important;
-        padding: 1.5rem !important;
-        overflow: auto !important;
-    }
-    
-    #builderModal .close-modal {
-        position: sticky !important;
-        top: 0 !important;
-        float: right !important;
-        font-size: 2rem !important;
-        padding: 0.3rem 0.8rem !important;
-        background: white !important;
-        border-radius: 0 16px 0 8px !important;
-        z-index: 10 !important;
-    }
-    
-    #cvTemplateArea {
-        overflow: visible !important;
+        font-size: 0.35rem !important;
+        padding: 0.02rem 0.15rem !important;
     }
 }
