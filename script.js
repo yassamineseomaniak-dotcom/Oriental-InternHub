@@ -3143,13 +3143,46 @@ if (searchInput) {
 
     // Print / Download CV
     
-    if (downloadBtn) {
-        downloadBtn.addEventListener("click", () => {
-            document.body.classList.add("printing-cv");
-            window.print();
-            setTimeout(() => document.body.classList.remove("printing-cv"), 500);
+// ✅ NOUVELLE VERSION - Export PDF avec html2pdf.js
+if (downloadBtn) {
+    downloadBtn.addEventListener("click", () => {
+        const cvTemplate = document.getElementById("cvTemplate");
+        if (!cvTemplate) return;
+
+        // S'assurer que les champs vides affichent leur placeholder
+        document.querySelectorAll("#cvTemplate .editable").forEach(el => {
+            if (el.innerText.trim() === "" && el.dataset.placeholder) {
+                el.innerText = el.dataset.placeholder;
+            }
         });
-    }
+
+        // Forcer l'affichage de la photo si présente
+        const photoPreview = document.getElementById("photoPreview");
+        if (photoPreview && photoPreview.src && photoPreview.src !== "") {
+            photoPreview.style.display = "block";
+        }
+
+        const opt = {
+            margin: 0,
+            filename: "CV_Oriental_InternHub.pdf",
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: {
+                scale: 2,
+                useCORS: true,
+                letterRendering: true,
+                scrollY: 0,
+                windowHeight: cvTemplate.scrollHeight
+            },
+            jsPDF: {
+                unit: 'mm',
+                format: 'a4',
+                orientation: 'portrait'
+            }
+        };
+
+        html2pdf().set(opt).from(cvTemplate).save();
+    });
+}
 
     // Photo Upload Preview
     if (upload && preview) {
@@ -3253,11 +3286,38 @@ window.addEventListener('click', (e) => {
 });
 
 // Download/Print functional workflow matching your CV pipeline
+// ✅ NOUVELLE VERSION - Export PDF avec html2pdf.js
 if (downloadLetterBtn) {
     downloadLetterBtn.addEventListener('click', () => {
-        document.body.classList.add("printing-letter");
-        window.print();
-        setTimeout(() => document.body.classList.remove("printing-letter"), 500);
+        const letterTemplate = document.getElementById("letterTemplate");
+        if (!letterTemplate) return;
+
+        // S'assurer que les champs vides affichent leur placeholder
+        document.querySelectorAll("#letterTemplate .editable").forEach(el => {
+            if (el.innerText.trim() === "" && el.dataset.placeholder) {
+                el.innerText = el.dataset.placeholder;
+            }
+        });
+
+        const opt = {
+            margin: 0,
+            filename: "Lettre_Motivation_Oriental_InternHub.pdf",
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: {
+                scale: 2,
+                useCORS: true,
+                letterRendering: true,
+                scrollY: 0,
+                windowHeight: letterTemplate.scrollHeight
+            },
+            jsPDF: {
+                unit: 'mm',
+                format: 'a4',
+                orientation: 'portrait'
+            }
+        };
+
+        html2pdf().set(opt).from(letterTemplate).save();
     });
 }
 
@@ -3401,6 +3461,8 @@ generateSommaire();
 
 let lastFocusedContent = null;
 
+
+
 document.addEventListener('focusin', (e) => {
     const content = e.target.closest('.page-content');
     if (content) {
@@ -3435,6 +3497,56 @@ document.getElementById('addTableBtn').addEventListener('click', () => {
     lastFocusedContent.appendChild(wrapper);
 });
 
+const imageUploader =
+document.getElementById(
+'imageUploader'
+);
+
+if(imageUploader){
+
+imageUploader.addEventListener(
+'change',
+
+function(){
+
+const file = this.files[0];
+
+if(!file || !lastFocusedContent)
+return;
+
+const reader =
+new FileReader();
+
+reader.onload = e=>{
+
+const img =
+document.createElement('img');
+
+img.src =
+e.target.result;
+
+img.style.maxWidth =
+'100%';
+
+img.style.display =
+'block';
+
+img.style.margin =
+'20px auto';
+
+lastFocusedContent
+.appendChild(img);
+
+};
+
+reader.readAsDataURL(file);
+
+this.value='';
+
+});
+
+}
+
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-table')) {
         if (confirm('Supprimer ce tableau ?')) {
@@ -3457,7 +3569,16 @@ document.addEventListener('change', function(e){
             const img = label.querySelector('.pageImagePreview');
             const placeholder = label.querySelector('.pageImagePlaceholder');
 
-            img.src = ev.target.result;
+                img.src = ev.target.result;
+
+                img.style.display='block';
+
+                e.target.parentElement
+                .querySelector('.logoPlaceholder')
+                .style.display='none';
+
+                e.target.parentElement
+                .classList.add('has-logo');
             img.style.display = 'block';
             placeholder.style.display = 'none';
         };
@@ -3466,64 +3587,78 @@ document.addEventListener('change', function(e){
     }
 });
 
-document
-.getElementById(
-'fontSizeSelector'
-)
-.addEventListener(
-'change',
-function(){
+    document
+    .getElementById(
+    'fontSizeSelector'
+    )
+    .addEventListener(
+    'change',
+    function(){
 
-document
-.querySelectorAll(
-'.report-page'
-)
-.forEach(page=>{
+    document
+    .querySelectorAll(
+    '.report-page'
+    )
+    .forEach(page=>{
 
-page.style.fontSize =
-this.value + 'pt';
+    page.style.fontSize =
+    this.value + 'pt';
 
-});
+    });
 
-});
+    });
 
-document
-.addEventListener(
-'change',
-function(e){
+    document
+    .addEventListener(
+    'change',
+    function(e){
 
-if(
-e.target.classList
-.contains('logoInput')
-){
+    if(
+    e.target.classList
+    .contains('logoInput')
+    ){
 
-const file =
-e.target.files[0];
+    const file =
+    e.target.files[0];
 
-if(!file) return;
+    if(!file) return;
 
-const reader =
-new FileReader();
+    const reader =
+    new FileReader();
 
-reader.onload = ev => {
+    reader.onload = ev => {
 
-const img =
-e.target
-.parentElement
-.querySelector(
-'.logoPreview'
-);
+            const img =
+            e.target.parentElement.querySelector(
+                '.logoPreview'
+            );
 
-img.src =
-ev.target.result;
+            img.src = ev.target.result;
 
-};
+            img.style.display = "block";
 
-reader.readAsDataURL(file);
+            const placeholder =
+            e.target.parentElement.querySelector(
+                '.logoPlaceholder'
+            );
 
-}
+            if(placeholder){
 
-});
+                placeholder.style.display =
+                "none";
+
+            }
+
+            e.target.parentElement.classList
+            .add('has-logo');
+
+        };
+
+        reader.readAsDataURL(file);
+
+        }
+
+    });
 
 
 
@@ -3688,83 +3823,106 @@ document.querySelectorAll(".floating-image")
 
 }
 
-const downloadReportBtn = document.getElementById("downloadReport");
+// ============================================================
+// TÉLÉCHARGER LE RAPPORT - Version avec html2pdf uniquement
+// ============================================================
 
-if (downloadReportBtn) {
+const downloadReport =
+document.getElementById("downloadReport");
 
-    downloadReportBtn.addEventListener("click", () => {
+if(downloadReport){
 
-        document.body.classList.add("printing-report");
+downloadReport.addEventListener("click",()=>{
 
-        if (typeof updatePageNumbers === "function") {
-            updatePageNumbers();
-        }
+updatePageNumbers();
 
-        if (typeof generateSommaire === "function") {
-            generateSommaire();
-        }
+generateSommaire();
 
-        window.print();
+const element = document.createElement("div");
 
-        setTimeout(() => {
-            document.body.classList.remove("printing-report");
-        }, 1000);
+document
+.querySelectorAll(".report-page")
+.forEach(page=>{
 
-    });
+    const clone =
+    page.cloneNode(true);
+
+    clone.querySelectorAll(
+    '.page-controls, .delete-table, .no-print'
+    )
+    .forEach(el=>el.remove());
+
+    clone.style.width='210mm';
+
+    clone.style.height='297mm';
+
+    clone.style.minHeight='297mm';
+
+    clone.style.margin='0';
+
+    clone.style.padding='20mm';
+
+    clone.style.boxSizing='border-box';
+
+    clone.style.pageBreakAfter='always';
+
+    element.appendChild(clone);
+
+});
+
+html2pdf()
+
+.set({
+
+    margin:0,
+
+    filename:
+
+    'Rapport_Stage_Oriental_InternHub.pdf',
+
+    image:{
+
+        type:'jpeg',
+
+        quality:0.98
+
+    },
+
+    html2canvas:{
+
+        scale:2,
+
+        useCORS:true
+
+    },
+
+    jsPDF:{
+
+        unit:'mm',
+
+        format:'a4',
+
+        orientation:'portrait'
+
+    },
+
+    pagebreak:{
+
+        mode:['legacy'],
+
+        after:'.report-page'
+
+    }
+
+})
+
+.from(element)
+
+.save();
+
+});
 
 }
-
-// ============================================================
-// GESTION DU LOGO DANS LE RAPPORT
-// ============================================================
-document.addEventListener('DOMContentLoaded', () => {
-    // Gestion du logo dans la page de couverture
-    document.addEventListener('change', function(e) {
-        if (e.target.classList.contains('logoInput')) {
-            const file = e.target.files[0];
-            if (!file) return;
-            
-            const label = e.target.closest('.logo-upload');
-            if (!label) return;
-            
-            const reader = new FileReader();
-            reader.onload = ev => {
-                const img = label.querySelector('.logoPreview');
-                if (img) {
-                    img.src = ev.target.result;
-                    // Ajouter la classe has-logo pour cacher le placeholder
-                    label.classList.add('has-logo');
-                }
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    // Gestion des images dans les pages du rapport
-    document.addEventListener('change', function(e) {
-        if (e.target.classList.contains('pageImageInput')) {
-            const file = e.target.files[0];
-            if (!file) return;
-            
-            const label = e.target.closest('.page-image-upload');
-            if (!label) return;
-            
-            const reader = new FileReader();
-            reader.onload = ev => {
-                const img = label.querySelector('.pageImagePreview');
-                const placeholder = label.querySelector('.pageImagePlaceholder');
-                if (img) {
-                    img.src = ev.target.result;
-                    img.style.display = 'block';
-                }
-                if (placeholder) {
-                    placeholder.style.display = 'none';
-                }
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-});
 
 // Ajoutez cette fonction pour réinitialiser le logo
 function resetLogo(label) {
@@ -3790,3 +3948,82 @@ document.addEventListener('dblclick', function(e) {
         }
     }
 });
+
+// ============================================================
+// GESTION DU SCROLL DES LIENS DE LA NAVBAR SUR MOBILE
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionner le wrapper des liens
+    const navWrapper = document.querySelector('.nav-links-wrapper');
+    
+    if (navWrapper) {
+        // Détecter le swipe pour faire défiler les liens
+        let isDragging = false;
+        let startX = 0;
+        let scrollLeft = 0;
+        
+        navWrapper.addEventListener('touchstart', function(e) {
+            isDragging = true;
+            startX = e.touches[0].pageX - navWrapper.offsetLeft;
+            scrollLeft = navWrapper.scrollLeft;
+        }, { passive: true });
+        
+        navWrapper.addEventListener('touchmove', function(e) {
+            if (!isDragging) return;
+            e.preventDefault(); // Empêche le scroll global
+            const x = e.touches[0].pageX - navWrapper.offsetLeft;
+            const walk = (x - startX) * 1.2; // Multiplicateur pour plus de réactivité
+            navWrapper.scrollLeft = scrollLeft - walk;
+        }, { passive: false });
+        
+        navWrapper.addEventListener('touchend', function() {
+            isDragging = false;
+        }, { passive: true });
+        
+        // Empêcher le scroll global quand on est sur la navbar
+        navWrapper.addEventListener('touchmove', function(e) {
+            e.stopPropagation();
+        }, { passive: false });
+    }
+});
+
+// ============================================================
+// EMPÊCHER LE ZOOM INDÉSIRABLE SUR MOBILE
+// ============================================================
+
+// Empêcher le gesture de zoom sur double-tap (iOS)
+document.addEventListener('gesturestart', function(e) {
+    if (e.target.closest('.nav-links-wrapper') || e.target.closest('.directory-filters')) {
+        // Autoriser le geste sur les zones de scroll
+        return;
+    }
+    e.preventDefault();
+}, { passive: false });
+
+// Empêcher le zoom avec deux doigts sur la page
+document.addEventListener('gesturechange', function(e) {
+    if (e.target.closest('.nav-links-wrapper') || e.target.closest('.directory-filters')) {
+        return;
+    }
+    e.preventDefault();
+}, { passive: false });
+
+// ============================================================
+// OPTIONNEL : DÉTECTER SI L'UTILISATEUR EST SUR MOBILE
+// ============================================================
+function isMobileDevice() {
+    return (window.innerWidth <= 768) || 
+           (navigator.userAgent.match(/Android/i) || 
+            navigator.userAgent.match(/iPhone/i) || 
+            navigator.userAgent.match(/iPad/i));
+}
+
+// Si mobile, on s'assure que la navbar est bien configurée
+if (isMobileDevice()) {
+    const navWrapper = document.querySelector('.nav-links-wrapper');
+    if (navWrapper) {
+        // Ajouter un indicateur visuel de scroll (optionnel)
+        navWrapper.style.cursor = 'grab';
+    }
+}
