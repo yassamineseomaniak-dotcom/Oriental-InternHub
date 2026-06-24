@@ -3185,121 +3185,129 @@ if (downloadBtn) {
 }
 
     // ============================================================
-    // PHOTO UPLOAD PREVIEW - VERSION MOBILE COMPATIBLE
+    // GESTION DE LA PHOTO - VERSION COMPLÈTE ET TESTÉE
     // ============================================================
-    if (upload && preview) {
+    const photoUpload = document.getElementById('photoUpload');
+    const photoPreview = document.getElementById('photoPreview');
+    const photoContainer = document.querySelector('.photo-container');
+    const photoPlaceholder = document.querySelector('.photo-placeholder');
+    
+    console.log('=== INIT PHOTO UPLOAD ===');
+    console.log('photoUpload:', photoUpload);
+    console.log('photoPreview:', photoPreview);
+    
+    if (photoUpload && photoPreview) {
         
-        // Fonction pour gérer le fichier sélectionné
+        // Fonction pour gérer l'upload
         function handlePhotoUpload(file) {
+            console.log('Fichier sélectionné:', file.name, 'Type:', file.type, 'Taille:', file.size);
+            
             if (!file) {
-                console.log('Aucun fichier sélectionné');
+                console.log('Aucun fichier');
                 return;
             }
             
             // Vérifier que c'est bien une image
             if (!file.type.startsWith('image/')) {
                 alert('Veuillez sélectionner une image (JPG, PNG, etc.)');
-                upload.value = '';
+                photoUpload.value = '';
                 return;
             }
             
             // Vérifier la taille (max 5MB)
             if (file.size > 5 * 1024 * 1024) {
                 alert('L\'image est trop volumineuse (max 5MB)');
-                upload.value = '';
+                photoUpload.value = '';
                 return;
             }
             
-            // Créer un FileReader pour lire l'image
             const reader = new FileReader();
             
             reader.onload = function(event) {
+                console.log('Photo chargée avec succès');
                 try {
-                    // Mettre à jour la prévisualisation
-                    preview.src = event.target.result;
-                    preview.style.display = 'block';
-                    preview.style.width = '70px';
-                    preview.style.height = '70px';
-                    preview.style.objectFit = 'cover';
-                    preview.style.borderRadius = '50%';
-                    preview.style.border = '3px solid white';
+                    // Afficher la photo
+                    photoPreview.src = event.target.result;
+                    photoPreview.style.display = 'block';
+                    photoPreview.style.width = '70px';
+                    photoPreview.style.height = '70px';
+                    photoPreview.style.objectFit = 'cover';
+                    photoPreview.style.borderRadius = '50%';
+                    photoPreview.style.border = '3px solid white';
                     
                     // Cacher le placeholder
-                    const placeholder = document.querySelector(".photo-placeholder");
-                    if (placeholder) {
-                        placeholder.style.display = 'none';
+                    if (photoPlaceholder) {
+                        photoPlaceholder.style.display = 'none';
+                        console.log('Placeholder caché');
                     }
                     
                     console.log('Photo insérée avec succès !');
                 } catch (error) {
-                    console.error('Erreur lors de l\'insertion de la photo:', error);
-                    alert('Erreur lors de l\'insertion de la photo');
+                    console.error('Erreur:', error);
                 }
             };
             
             reader.onerror = function() {
                 alert('Erreur lors de la lecture du fichier');
-                upload.value = '';
+                photoUpload.value = '';
             };
             
-            // Lire le fichier comme URL de données
             reader.readAsDataURL(file);
         }
         
-        // Événement change - fonctionne sur tous les appareils
-        upload.addEventListener('change', function(e) {
-            const file = e.target.files[0];
+        // Événement change - méthode principale
+        photoUpload.addEventListener('change', function(e) {
+            console.log('Event change déclenché');
+            const file = this.files[0];
             handlePhotoUpload(file);
         });
         
-        // Pour mobile : forcer le déclenchement de l'événement change
-        // si le navigateur ne le fait pas correctement
-        upload.addEventListener('click', function(e) {
-            // Forcer le reset du input pour permettre de resélectionner le même fichier
+        // Pour mobile : s'assurer que l'événement est déclenché
+        photoUpload.addEventListener('click', function(e) {
+            console.log('Event click sur le input');
+            // Réinitialiser pour permettre de resélectionner le même fichier
             this.value = '';
         });
         
-        // PERMETTRE DE SUPPRIMER LA PHOTO EN DOUBLE-CLIQUANT
-        const photoContainer = document.querySelector('.photo-container');
+        // Supprimer la photo en double-cliquant sur le conteneur
         if (photoContainer) {
             photoContainer.addEventListener('dblclick', function(e) {
                 e.preventDefault();
-                e.stopPropagation();
+                console.log('Double-clic détecté');
                 
-                if (confirm('Supprimer la photo ?')) {
-                    preview.src = '';
-                    preview.style.display = 'none';
-                    
-                    const placeholder = document.querySelector('.photo-placeholder');
-                    if (placeholder) {
-                        placeholder.style.display = 'flex';
+                if (photoPreview.src && photoPreview.src !== '') {
+                    if (confirm('Supprimer la photo ?')) {
+                        photoPreview.src = '';
+                        photoPreview.style.display = 'none';
+                        
+                        if (photoPlaceholder) {
+                            photoPlaceholder.style.display = 'flex';
+                        }
+                        
+                        photoUpload.value = '';
+                        console.log('Photo supprimée');
                     }
-                    
-                    upload.value = '';
-                    console.log('Photo supprimée');
                 }
             });
         }
         
-        // OPTION: Drag & Drop pour mobile
+        // Support double tap sur mobile
+        let touchTimer = null;
         if (photoContainer) {
             photoContainer.addEventListener('touchstart', function(e) {
-                // Sur mobile, le double-clic est différent
-                let touchTimer;
                 if (e.touches.length === 1) {
                     if (touchTimer) {
                         clearTimeout(touchTimer);
                         touchTimer = null;
                         // Double tap détecté
-                        if (preview.src && preview.src !== '') {
+                        if (photoPreview.src && photoPreview.src !== '') {
                             if (confirm('Supprimer la photo ?')) {
-                                preview.src = '';
-                                preview.style.display = 'none';
-                                const placeholder = document.querySelector('.photo-placeholder');
-                                if (placeholder) {
-                                    placeholder.style.display = 'flex';
+                                photoPreview.src = '';
+                                photoPreview.style.display = 'none';
+                                if (photoPlaceholder) {
+                                    photoPlaceholder.style.display = 'flex';
                                 }
-                                upload.value = '';
+                                photoUpload.value = '';
                             }
                         }
                     } else {
@@ -3310,8 +3318,11 @@ if (downloadBtn) {
                 }
             });
         }
+    } else {
+        console.error('Éléments photo non trouvés !');
+        console.log('photoUpload:', photoUpload);
+        console.log('photoPreview:', photoPreview);
     }
-
     // =========================================================================
     // 5. DYNAMIC CV SECTION CONTROLS (Remove, Move Up, Move Down, Education title)
     // =========================================================================
