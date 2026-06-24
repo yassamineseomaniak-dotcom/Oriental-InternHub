@@ -3073,7 +3073,7 @@ footer {
 }
 
 /* ============================================================
-   CV TEMPLATE - MOBILE 2 COLONNES (AMÉLIORÉ)
+   CV TEMPLATE - MOBILE 2 COLONNES (ULTRA COMPACT)
    ============================================================ */
 
 @media (max-width: 768px) {
@@ -3188,7 +3188,7 @@ footer {
     }
     
     /* ===== CV - 2 COLONNES ===== */
-    .cv-template {
+    #cvTemplateArea .cv-template {
         display: grid !important;
         grid-template-columns: 140px 1fr !important;
         grid-template-rows: 1fr !important;
@@ -3202,13 +3202,13 @@ footer {
         max-width: 100% !important;
     }
     
-    .cv-template > * {
+    #cvTemplateArea .cv-template > * {
         min-width: 0 !important;
         max-width: 100% !important;
     }
     
     /* ===== SIDEBAR - GAUCHE (SOMBRE) ===== */
-    .cv-sidebar {
+    #cvTemplateArea .cv-sidebar {
         background: #2E384D !important;
         color: #F8FAFC !important;
         padding: 0.8rem 0.6rem !important;
@@ -3222,7 +3222,7 @@ footer {
         height: 100% !important;
     }
     
-    .cv-sidebar h3 {
+    #cvTemplateArea .cv-sidebar h3 {
         font-size: 0.6rem !important;
         letter-spacing: 0.5px !important;
         text-transform: uppercase !important;
@@ -3232,7 +3232,7 @@ footer {
         color: #F8FAFC !important;
     }
     
-    .cv-sidebar .editable {
+    #cvTemplateArea .cv-sidebar .editable {
         color: #F8FAFC !important;
         font-size: 0.65rem !important;
         min-height: 0.7rem !important;
@@ -3240,20 +3240,20 @@ footer {
         line-height: 1.3 !important;
     }
     
-    .cv-sidebar .editable:empty::before {
+    #cvTemplateArea .cv-sidebar .editable:empty::before {
         color: #94A3B8 !important;
         font-style: italic !important;
         font-size: 0.55rem !important;
     }
     
-    .sidebar-section {
+    #cvTemplateArea .sidebar-section {
         display: flex !important;
         flex-direction: column !important;
         gap: 0.1rem !important;
     }
     
     /* ===== PHOTO - PLUS GRANDE ===== */
-    .photo-container {
+    #cvTemplateArea .photo-container {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
@@ -3262,7 +3262,7 @@ footer {
         cursor: pointer !important;
     }
     
-    .photo-placeholder {
+    #cvTemplateArea .photo-placeholder {
         width: 70px !important;
         height: 70px !important;
         border: 2px solid white !important;
@@ -3278,11 +3278,11 @@ footer {
         color: #F8FAFC !important;
     }
     
-    .photo-placeholder small {
+    #cvTemplateArea .photo-placeholder small {
         display: none !important;
     }
     
-    #photoPreview {
+    #cvTemplateArea #photoPreview {
         width: 70px !important;
         height: 70px !important;
         object-fit: cover !important;
@@ -3292,7 +3292,7 @@ footer {
     }
     
     /* ===== MAIN - DROITE (CLAIR) ===== */
-    .cv-main {
+    #cvTemplateArea .cv-main {
         padding: 0.8rem 0.8rem 0.5rem 0.6rem !important;
         background: white !important;
         color: #1E293B !important;
@@ -3304,18 +3304,20 @@ footer {
         height: 100% !important;
     }
     
-    /* ===== NOM - PLUS GROS ET VISIBLE ===== */
-    .cv-main .cv-name {
-        font-size: 1.2rem !important;
+    /* ===== NOM - PLUS GROS ===== */
+    #cvTemplateArea .cv-main .cv-name {
+        font-size: 1.3rem !important;
         font-weight: 700 !important;
         border-bottom: 2px solid #2E384D !important;
         padding-bottom: 0.2rem !important;
         margin-bottom: 0.4rem !important;
         color: #1E293B !important;
-        min-height: 1.4rem !important;
+        min-height: 1.6rem !important;
+        display: block !important;
+        width: 100% !important;
     }
     
-    .cv-main .cv-name:empty::before {
+    #cvTemplateArea .cv-main .cv-name:empty::before {
         content: "NOM Prénom" !important;
         color: #94A3B8 !important;
         font-style: italic !important;
@@ -3323,7 +3325,7 @@ footer {
     }
     
     /* ===== TITRES DES SECTIONS ===== */
-    .cv-main h2 {
+    #cvTemplateArea .cv-main h2 {
         font-size: 0.6rem !important;
         margin-bottom: 0.15rem !important;
         color: #2E384D !important;
@@ -3334,7 +3336,7 @@ footer {
     }
     
     /* ===== TEXTE DES SECTIONS ===== */
-    .cv-main .editable {
+    #cvTemplateArea .cv-main .editable {
         font-size: 0.7rem !important;
         min-height: 0.7rem !important;
         padding: 0.05rem 0 !important;
@@ -3344,18 +3346,18 @@ footer {
         word-break: break-word !important;
     }
     
-    .cv-main .editable:empty::before {
+    #cvTemplateArea .cv-main .editable:empty::before {
         color: #94A3B8 !important;
         font-style: italic !important;
         font-size: 0.6rem !important;
     }
     
     /* ===== SECTIONS ===== */
-    .cv-section {
+    #cvTemplateArea .cv-section {
         margin-bottom: 0.5rem !important;
     }
     
-    .cv-section .section-header {
+    #cvTemplateArea .cv-section .section-header {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
@@ -3363,12 +3365,12 @@ footer {
         margin-bottom: 0 !important;
     }
     
-    .section-actions {
+    #cvTemplateArea .section-actions {
         display: flex !important;
         gap: 0.1rem !important;
     }
     
-    .section-actions button {
+    #cvTemplateArea .section-actions button {
         padding: 0.05rem 0.3rem !important;
         font-size: 0.45rem !important;
         border: 1px solid #CBD5E1 !important;
@@ -3379,16 +3381,16 @@ footer {
         line-height: 1 !important;
     }
     
-    .section-actions .remove-section {
+    #cvTemplateArea .section-actions .remove-section {
         color: #DC2626 !important;
     }
     
-    .cv-section.fixed .section-actions {
+    #cvTemplateArea .cv-section.fixed .section-actions {
         display: none !important;
     }
     
     /* ===== EMPÊCHER LE DÉBORDEMENT ===== */
-    .cv-template * {
+    #cvTemplateArea .cv-template * {
         max-width: 100% !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
@@ -3419,58 +3421,63 @@ footer {
         font-size: 0.6rem !important;
     }
     
-    .cv-template {
+    #cvTemplateArea .cv-template {
         grid-template-columns: 110px 1fr !important;
     }
     
-    .cv-sidebar {
+    #cvTemplateArea .cv-sidebar {
         padding: 0.5rem 0.4rem !important;
         gap: 0.4rem !important;
     }
     
-    .cv-sidebar h3 {
+    #cvTemplateArea .cv-sidebar h3 {
         font-size: 0.5rem !important;
     }
     
-    .cv-sidebar .editable {
+    #cvTemplateArea .cv-sidebar .editable {
         font-size: 0.55rem !important;
         min-height: 0.5rem !important;
     }
     
-    .photo-placeholder {
+    #cvTemplateArea .photo-placeholder {
         width: 55px !important;
         height: 55px !important;
         font-size: 0.4rem !important;
         padding: 0.3rem !important;
     }
     
-    #photoPreview {
+    #cvTemplateArea #photoPreview {
         width: 55px !important;
         height: 55px !important;
     }
     
-    .cv-main {
+    #cvTemplateArea .cv-main {
         padding: 0.5rem 0.5rem 0.3rem 0.4rem !important;
     }
     
-    .cv-main .cv-name {
-        font-size: 1rem !important;
+    #cvTemplateArea .cv-main .cv-name {
+        font-size: 1.1rem !important;
+        min-height: 1.4rem !important;
     }
     
-    .cv-main h2 {
+    #cvTemplateArea .cv-main .cv-name:empty::before {
+        font-size: 0.9rem !important;
+    }
+    
+    #cvTemplateArea .cv-main h2 {
         font-size: 0.5rem !important;
     }
     
-    .cv-main .editable {
+    #cvTemplateArea .cv-main .editable {
         font-size: 0.6rem !important;
         min-height: 0.5rem !important;
     }
     
-    .cv-section {
+    #cvTemplateArea .cv-section {
         margin-bottom: 0.35rem !important;
     }
     
-    .section-actions button {
+    #cvTemplateArea .section-actions button {
         font-size: 0.35rem !important;
         padding: 0.03rem 0.2rem !important;
     }
@@ -3480,7 +3487,7 @@ footer {
    DESKTOP - FORMAT A4
    ============================================================ */
 @media (min-width: 769px) {
-    .cv-template {
+    #cvTemplateArea .cv-template {
         display: grid !important;
         grid-template-columns: 240px 1fr !important;
         width: 210mm !important;
@@ -3491,63 +3498,63 @@ footer {
         border-radius: 4px !important;
     }
     
-    .cv-sidebar {
+    #cvTemplateArea .cv-sidebar {
         padding: 2rem 1.5rem !important;
         gap: 1.5rem !important;
         background: #2E384D !important;
         color: #F8FAFC !important;
     }
     
-    .cv-sidebar h3 {
+    #cvTemplateArea .cv-sidebar h3 {
         font-size: 0.9rem !important;
         border-bottom: 2px solid var(--primary) !important;
         padding-bottom: 0.5rem !important;
         margin-bottom: 0.5rem !important;
     }
     
-    .cv-sidebar .editable {
+    #cvTemplateArea .cv-sidebar .editable {
         font-size: 0.9rem !important;
         min-height: 1.6rem !important;
         color: #F8FAFC !important;
     }
     
-    .photo-placeholder {
+    #cvTemplateArea .photo-placeholder {
         width: 120px !important;
         height: 120px !important;
         font-size: 0.8rem !important;
     }
     
-    .photo-placeholder small {
+    #cvTemplateArea .photo-placeholder small {
         display: block !important;
         font-size: 0.6rem !important;
     }
     
-    #photoPreview {
+    #cvTemplateArea #photoPreview {
         width: 120px !important;
         height: 120px !important;
     }
     
-    .cv-main {
+    #cvTemplateArea .cv-main {
         padding: 2rem 2rem 2rem 1.8rem !important;
         background: white !important;
         color: #1E293B !important;
     }
     
-    .cv-main .cv-name {
+    #cvTemplateArea .cv-main .cv-name {
         font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
     }
     
-    .cv-main h2 {
+    #cvTemplateArea .cv-main h2 {
         font-size: 1rem !important;
     }
     
-    .cv-main .editable {
+    #cvTemplateArea .cv-main .editable {
         font-size: 0.95rem !important;
         min-height: 1.6rem !important;
         color: #1E293B !important;
     }
     
-    .cv-section {
+    #cvTemplateArea .cv-section {
         margin-bottom: 1.2rem !important;
     }
 }
