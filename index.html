@@ -852,7 +852,8 @@
 
                         <div
                             class="editable"
-                            contenteditable="true">
+                            contenteditable="true"
+                            data-bind="cover.universityName">
 
                             NOM DE L'UNIVERSITÉ
 
@@ -860,7 +861,8 @@
 
                         <div
                             class="editable"
-                            contenteditable="true">
+                            contenteditable="true"
+                            data-bind="cover.fieldOfStudy">
 
                             Filière
 
@@ -876,7 +878,8 @@
 
                         <div
                         class="editable report-subtitle"
-                        contenteditable="true">
+                        contenteditable="true"
+                        data-bind="cover.subtitle">
 
                         Titre du rapport
 
@@ -892,7 +895,8 @@
 
                             <div
                             class="editable"
-                            contenteditable="true">
+                            contenteditable="true"
+                            data-bind="cover.studentName">
 
                             NOM Prénom
 
@@ -906,7 +910,8 @@
 
                             <div
                             class="editable"
-                            contenteditable="true">
+                            contenteditable="true"
+                            data-bind="cover.supervisor">
 
                             Nom Encadrant
 
@@ -922,7 +927,8 @@
 
                         <span
                         class="editable"
-                        contenteditable="true">
+                        contenteditable="true"
+                        data-bind="cover.academicYear">
 
                         2025-2026
 
@@ -943,7 +949,7 @@
 
                         <h2 class="page-title">Remerciements</h2>
 
-                        <div class="editable page-content" contenteditable="true">
+                        <div class="editable page-content" contenteditable="true" data-bind="sections.remerciements">
                         </div>
                     </div>
 
@@ -957,7 +963,7 @@
 
                         <h2 class="page-title">Dédicace</h2>
 
-                        <div class="editable page-content" contenteditable="true">
+                        <div class="editable page-content" contenteditable="true" data-bind="sections.dedicace">
                         </div>
                     </div>
 
@@ -971,7 +977,7 @@
 
                         <h2 class="page-title">Liste des abréviations</h2>
 
-                        <div class="editable page-content" contenteditable="true">
+                        <div class="editable page-content" contenteditable="true" data-bind="sections.abreviations">
                         </div>
                     </div>
                     <!-- LISTE DES TABLEAUX -->
@@ -986,7 +992,7 @@
                             Liste des tableaux
                         </h2>
 
-                        <div class="editable page-content" contenteditable="true"></div>
+                        <div class="editable page-content" contenteditable="true" data-bind="sections.tableaux"></div>
                     </div>
 
                     <!-- LISTE DES FIGURES -->
@@ -1001,7 +1007,7 @@
                             Liste des figures
                         </h2>
 
-                        <div class="editable page-content" contenteditable="true"></div>
+                        <div class="editable page-content" contenteditable="true" data-bind="sections.figures"></div>
                     </div>
 
 
@@ -1046,7 +1052,8 @@
 
                             <h2
                                 class="page-title editable"
-                                contenteditable="true">
+                                contenteditable="true"
+                                data-bind="sections.introduction.title">
 
                                 Introduction
 
@@ -1056,7 +1063,8 @@
 
                         <div
                             class="editable page-content"
-                            contenteditable="true">
+                            contenteditable="true"
+                            data-bind="sections.introduction.content">
 
                         </div>
 
@@ -1071,11 +1079,11 @@
                             <button class="delete-page">🗑</button>
                         </div>
 
-                        <h2 class="page-title editable" contenteditable="true">
+                        <h2 class="page-title editable" contenteditable="true" data-bind="sections.organisme.title">
                             Présentation de l'Organisme d'Accueil
                         </h2>
 
-                        <div class="editable page-content" contenteditable="true"></div>
+                        <div class="editable page-content" contenteditable="true" data-bind="sections.organisme.content"></div>
 
                     </div>
 
@@ -1089,12 +1097,12 @@
                         <button class="delete-page">🗑</button>
                     </div>
 
-                    <h2 class="page-title editable" contenteditable="true">
+                    <h2 class="page-title editable" contenteditable="true" data-bind="sections.taches.title">
                         Tâches Effectuées
                     </h2>
 
 
-                    <div class="editable page-content" contenteditable="true"></div>
+                    <div class="editable page-content" contenteditable="true" data-bind="sections.taches.content"></div>
 
                 </div>
 
@@ -1107,12 +1115,12 @@
                         <button class="delete-page">🗑</button>
                     </div>
 
-                    <h2 class="page-title editable" contenteditable="true">
+                    <h2 class="page-title editable" contenteditable="true" data-bind="sections.competences.title">
                         Compétences Acquises
                     </h2>
 
 
-                    <div class="editable page-content" contenteditable="true"></div>
+                    <div class="editable page-content" contenteditable="true" data-bind="sections.competences.content"></div>
 
                 </div>
 
@@ -1132,7 +1140,8 @@
 
                         <h2
                             class="page-title editable"
-                            contenteditable="true">
+                            contenteditable="true"
+                            data-bind="sections.conclusion.title">
 
                             Conclusion
 
@@ -1140,7 +1149,8 @@
 
                         <div
                             class="editable page-content"
-                            contenteditable="true">
+                            contenteditable="true"
+                            data-bind="sections.conclusion.content">
 
                         </div>
 
@@ -1158,7 +1168,7 @@
                             Références
                         </h2>
 
-                        <div class="editable page-content" contenteditable="true"></div>
+                        <div class="editable page-content" contenteditable="true" data-bind="sections.references"></div>
                     </div>
 
                     <!-- ANNEXES -->
@@ -1173,7 +1183,7 @@
                             Annexes
                         </h2>
 
-                        <div class="editable page-content" contenteditable="true"></div>
+                        <div class="editable page-content" contenteditable="true" data-bind="sections.annexes"></div>
                     </div>
 
                     <!-- TABLE DES MATIERES -->
@@ -1199,6 +1209,8 @@
 
         <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
         <script src="script.js"></script>
     
     </body>
