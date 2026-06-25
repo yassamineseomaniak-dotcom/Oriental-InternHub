@@ -3483,6 +3483,73 @@ if (downloadLetterBtn) {
     });
 }
 
+// ============================================================
+// STATE DU RAPPORT - Toutes les données bindées
+// ============================================================
+
+const reportState = {
+    cover: {
+        universityName: '',
+        fieldOfStudy: '',
+        subtitle: '',
+        studentName: '',
+        supervisor: '',
+        academicYear: '',
+        logoDataUrl: null
+    },
+    sections: {
+        remerciements: '',
+        dedicace: '',
+        abreviations: '',
+        tableaux: '',
+        figures: '',
+        introduction: { title: 'Introduction', content: '' },
+        organisme: { title: "Présentation de l'Organisme d'Accueil", content: '' },
+        taches: { title: 'Tâches Effectuées', content: '' },
+        competences: { title: 'Compétences Acquises', content: '' },
+        conclusion: { title: 'Conclusion', content: '' },
+        references: '',
+        annexes: ''
+    },
+    extraPages: []
+};
+
+function setNested(obj, path, value) {
+    const keys = path.split('.');
+    let current = obj;
+    for (let i = 0; i < keys.length - 1; i++) {
+        current = current[keys[i]];
+    }
+    current[keys[keys.length - 1]] = value;
+}
+
+function getNested(obj, path) {
+    const keys = path.split('.');
+    let current = obj;
+    for (const key of keys) {
+        if (current == null || current[key] === undefined) return '';
+        current = current[key];
+    }
+    return current || '';
+}
+
+function syncStateFromDOM() {
+    document.querySelectorAll('#reportContainer [data-bind]').forEach(el => {
+        const value = el.innerText.trim();
+        setNested(reportState, el.dataset.bind, value);
+    });
+}
+
+// Sync state + écoute des modifications
+const reportContainer = document.getElementById('reportContainer');
+if (reportContainer) {
+    reportContainer.addEventListener('input', (e) => {
+        const el = e.target.closest('[data-bind]');
+        if (!el) return;
+        setNested(reportState, el.dataset.bind, el.innerText);
+    });
+}
+
 const reportModal =
 document.getElementById(
     "reportBuilderModal"
@@ -3502,6 +3569,7 @@ openReportBuilder.onclick = () =>
 {
     reportModal.style.display = "block";
 
+    syncStateFromDOM();
     updatePageNumbers();
     generateSommaire();
 };
@@ -3790,6 +3858,8 @@ document.addEventListener('change', function(e){
 
     reader.onload = ev => {
 
+            reportState.cover.logoDataUrl = ev.target.result;
+
             const img =
             e.target.parentElement.querySelector(
                 '.logoPreview'
@@ -3986,108 +4056,80 @@ document.querySelectorAll(".floating-image")
 }
 
 // ============================================================
-// TÉLÉCHARGER LE RAPPORT - Version avec html2pdf uniquement
+// TÉLÉCHARGER LE RAPPORT - html2canvas page par page + jsPDF
 // ============================================================
 
 const downloadReport =
 document.getElementById("downloadReport");
 
 if(downloadReport){
+    downloadReport.addEventListener("click", async () => {
+        try {
+            if (typeof html2canvas !== 'function') throw new Error('html2canvas non chargé');
+            if (!window.jspdf || typeof window.jspdf.jsPDF !== 'function') throw new Error('jsPDF non chargé');
 
-downloadReport.addEventListener("click",()=>{
+            updatePageNumbers();
+            generateSommaire();
+            syncStateFromDOM();
 
-updatePageNumbers();
+            const container = document.getElementById("reportContainer");
+            const originalPages = Array.from(container.querySelectorAll('.report-page'));
+            const name = (reportState.cover.studentName || 'stagiaire').replace(/\s+/g, '_');
+            const filename = `rapport_de_stage_${name}.pdf`;
 
-generateSommaire();
+            // Construire un wrapper hors-écran pour le rendu html2canvas
+            const wrapper = document.createElement('div');
+            wrapper.id = 'pdf-export-wrapper';
+            wrapper.style.cssText = 'position:fixed;top:0;left:-9999px;z-index:-1;width:210mm;background:#fff;';
 
-const element = document.createElement("div");
+            // Cloner chaque page sans les contrôles
+            originalPages.forEach(page => {
+                const clone = page.cloneNode(true);
+                clone.querySelectorAll('.page-controls, .delete-table, .no-print, .close-modal').forEach(el => el.remove());
+                clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+                clone.style.margin = '0';
+                wrapper.appendChild(clone);
+            });
 
-document
-.querySelectorAll(".report-page")
-.forEach(page=>{
+            document.body.appendChild(wrapper);
 
-    const clone =
-    page.cloneNode(true);
+            // Générer le PDF page par page avec html2canvas
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pageWidth = 210;
+            const pageHeight = 297;
 
-    clone.querySelectorAll(
-    '.page-controls, .delete-table, .no-print'
-    )
-    .forEach(el=>el.remove());
+            const reportPages = wrapper.querySelectorAll('.report-page');
 
-    clone.style.width='210mm';
+            for (let i = 0; i < reportPages.length; i++) {
+                const canvas = await html2canvas(reportPages[i], {
+                    scale: 2,
+                    useCORS: true,
+                    letterRendering: true,
+                    backgroundColor: '#ffffff'
+                });
 
-    clone.style.height='297mm';
+                const imgData = canvas.toDataURL('image/jpeg', 0.95);
 
-    clone.style.minHeight='297mm';
+                if (i > 0) pdf.addPage();
+                // Ajuster l'image pour remplir exactement la page A4
+                pdf.addImage(imgData, 'JPEG', 0, 0, pageWidth, pageHeight);
+            }
 
-    clone.style.margin='0';
-
-    clone.style.padding='20mm';
-
-    clone.style.boxSizing='border-box';
-
-    clone.style.pageBreakAfter='always';
-
-    element.appendChild(clone);
-
-});
-
-html2pdf()
-
-.set({
-
-    margin:0,
-
-    filename:
-
-    'Rapport_Stage_Oriental_InternHub.pdf',
-
-    image:{
-
-        type:'jpeg',
-
-        quality:0.98
-
-    },
-
-    html2canvas:{
-
-        scale:2,
-
-        useCORS:true
-
-    },
-
-    jsPDF:{
-
-        unit:'mm',
-
-        format:'a4',
-
-        orientation:'portrait'
-
-    },
-
-    pagebreak:{
-
-        mode:['legacy'],
-
-        after:'.report-page'
-
-    }
-
-})
-
-.from(element)
-
-.save();
-
-});
-
+            pdf.save(filename);
+            wrapper.remove();
+        } catch (err) {
+            console.error('Erreur téléchargement rapport:', err);
+            const w = document.getElementById('pdf-export-wrapper');
+            if (w) w.remove();
+            alert('Erreur: ' + err.message);
+        }
+    });
 }
 
 // Ajoutez cette fonction pour réinitialiser le logo
 function resetLogo(label) {
+    reportState.cover.logoDataUrl = null;
     const img = label.querySelector('.logoPreview');
     const fileInput = label.querySelector('.logoInput');
     
